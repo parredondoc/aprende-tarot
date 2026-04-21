@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
   <meta name="theme-color" content="#534AB7">
-  <meta name="description" content="Aprendé tarot con lecciones interactivas. Incluye fundamentos, mirada junguiana y escuela Jodorowsky.">
+  <meta name="description" content="Aprendé tarot: lecciones interactivas y biblioteca de consulta. Fundamentos, mirada junguiana y escuela Jodorowsky.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Aprende Tarot">
@@ -40,38 +40,25 @@
       }
     }
     * { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0;
-      font-family: var(--font-sans);
-      background: var(--color-background-tertiary);
-      color: var(--color-text-primary);
-      min-height: 100vh;
-      overscroll-behavior-y: contain;
-      -webkit-tap-highlight-color: transparent;
-      -webkit-font-smoothing: antialiased;
-    }
-    body {
-      padding: max(1rem, env(safe-area-inset-top)) 1rem max(1rem, env(safe-area-inset-bottom));
-      max-width: 680px; margin: 0 auto;
-    }
+    html, body { margin: 0; padding: 0; font-family: var(--font-sans); background: var(--color-background-tertiary); color: var(--color-text-primary); min-height: 100vh; overscroll-behavior-y: contain; -webkit-tap-highlight-color: transparent; -webkit-font-smoothing: antialiased; }
+    body { padding: max(1rem, env(safe-area-inset-top)) 1rem max(1rem, env(safe-area-inset-bottom)); max-width: 680px; margin: 0 auto; }
     button { font-family: inherit; color: inherit; }
-
     @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
     .screen { animation: fadeIn 0.25s ease; }
-
-    .header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); gap: 12px; }
+    .header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.25rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); gap: 12px; }
     .h-title { font-size: 22px; font-weight: 500; margin: 0; }
     .h-sub { font-size: 13px; color: var(--color-text-secondary); margin: 4px 0 0; }
     .h-stats { display: flex; gap: 10px; font-size: 13px; color: var(--color-text-secondary); flex-shrink: 0; align-items: center; }
     .h-stat b { color: var(--color-text-primary); font-weight: 500; margin-left: 4px; }
-    .h-reset { background: none; border: 0.5px solid var(--color-border-tertiary); border-radius: 50%; width: 28px; height: 28px; padding: 0; cursor: pointer; font-size: 14px; color: var(--color-text-tertiary); display: flex; align-items: center; justify-content: center; }
-    .h-reset:hover { background: var(--color-background-secondary); color: var(--color-text-secondary); }
-
+    .h-btn { background: none; border: 0.5px solid var(--color-border-tertiary); border-radius: 50%; width: 28px; height: 28px; padding: 0; cursor: pointer; font-size: 14px; color: var(--color-text-tertiary); display: flex; align-items: center; justify-content: center; }
+    .h-btn:hover { background: var(--color-background-secondary); color: var(--color-text-secondary); }
+    .modetabs { display: flex; gap: 4px; background: var(--color-background-secondary); padding: 4px; border-radius: var(--border-radius-md); margin-bottom: 1.5rem; }
+    .modetab { flex: 1; padding: 10px 12px; border: none; background: transparent; cursor: pointer; font-size: 14px; font-weight: 500; color: var(--color-text-secondary); border-radius: calc(var(--border-radius-md) - 2px); transition: background 0.15s, color 0.15s; }
+    .modetab.active { background: var(--color-background-primary); color: var(--color-text-primary); }
     .modgroup { margin-bottom: 1.5rem; }
     .modhead { margin: 0 0 10px; padding: 0 4px; }
     .modtitle { font-size: 13px; font-weight: 500; margin: 0; letter-spacing: 0.3px; }
     .modsub { font-size: 12px; color: var(--color-text-secondary); margin: 2px 0 0; }
-
     .lessons { display: grid; gap: 8px; }
     .lesson { display: flex; align-items: center; gap: 14px; padding: 13px 16px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); cursor: pointer; transition: background 0.15s, border-color 0.15s; text-align: left; width: 100%; font-size: inherit; }
     .lesson:hover:not(.locked), .lesson:active:not(.locked) { background: var(--color-background-secondary); border-color: var(--color-border-secondary); }
@@ -83,18 +70,15 @@
     .lsub { font-size: 12px; color: var(--color-text-secondary); margin: 0; }
     .lbadge { font-size: 11px; padding: 3px 10px; border-radius: 999px; background: var(--color-background-secondary); color: var(--color-text-secondary); flex-shrink: 0; }
     .lbadge.done { background: #EEEDFE; color: #26215C; }
-
     .pbar-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
     .pback { background: none; border: none; cursor: pointer; padding: 4px 10px; font-size: 18px; color: var(--color-text-secondary); line-height: 1; }
     .pback:hover { color: var(--color-text-primary); }
     .pbar { flex: 1; height: 8px; background: var(--color-background-secondary); border-radius: 999px; overflow: hidden; }
     .pfill { height: 100%; background: #7F77DD; transition: width 0.3s ease; }
-
     .slide { padding: 1.5rem 1rem; text-align: center; min-height: 280px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1rem; }
     .svisual { display: flex; justify-content: center; align-items: center; min-height: 120px; }
     .stitle { font-size: 20px; font-weight: 500; margin: 0; }
     .sbody { font-size: 15px; line-height: 1.65; color: var(--color-text-secondary); max-width: 480px; margin: 0; }
-
     .qwrap { padding: 1rem 0; max-width: 460px; margin: 0 auto; }
     .qq { font-size: 17px; font-weight: 500; margin: 0 0 1.25rem; text-align: center; line-height: 1.4; }
     .qopts { display: grid; gap: 8px; }
@@ -106,20 +90,44 @@
     .qfb { margin-top: 14px; padding: 12px 14px; border-radius: var(--border-radius-md); font-size: 13.5px; line-height: 1.55; }
     .qfb.correct { background: #EAF3DE; color: #27500A; }
     .qfb.wrong { background: #FCEBEB; color: #791F1F; }
-
     .navwrap { display: flex; justify-content: center; margin-top: 1.5rem; }
     .btn { padding: 12px 30px; background: #534AB7; color: white; border: none; border-radius: var(--border-radius-md); font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.15s; }
     .btn:hover:not(:disabled), .btn:active:not(:disabled) { background: #3C3489; }
     .btn:disabled { opacity: 0.35; cursor: not-allowed; }
-
     .comp { text-align: center; padding: 1.5rem 1rem; }
     .comp-icon { width: 56px; height: 56px; margin: 0 auto 1rem; display: block; }
     .comp-title { font-size: 22px; font-weight: 500; margin: 0 0 6px; }
     .comp-body { font-size: 14px; color: var(--color-text-secondary); margin: 0 0 1rem; }
     .xpchip { display: inline-block; padding: 6px 14px; background: #FAEEDA; color: #633806; border-radius: 999px; font-weight: 500; font-size: 13px; margin-bottom: 1.25rem; }
-
     .allDone { text-align: center; padding: 1rem; color: var(--color-text-secondary); font-size: 13px; margin-top: 1rem; }
-
+    .search-wrap { margin-bottom: 1rem; }
+    .search-in { width: 100%; padding: 10px 14px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); font-family: inherit; font-size: 14px; color: inherit; box-sizing: border-box; }
+    .search-in:focus { outline: none; border-color: #7F77DD; }
+    .lib-section { margin-bottom: 1.5rem; }
+    .lib-head { font-size: 13px; font-weight: 500; margin: 0 0 10px; padding: 0 4px; letter-spacing: 0.3px; color: var(--color-text-secondary); }
+    .lib-subhead { font-size: 11px; font-weight: 500; margin: 16px 4px 8px; letter-spacing: 0.3px; color: var(--color-text-tertiary); text-transform: uppercase; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 10px; }
+    .card-tile { background: none; border: none; padding: 0; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 4px; font-family: inherit; color: inherit; }
+    .card-tile svg { width: 100%; max-width: 78px; height: auto; transition: transform 0.15s; }
+    .card-tile:hover svg, .card-tile:active svg { transform: translateY(-2px); }
+    .card-label { font-size: 10px; color: var(--color-text-secondary); text-align: center; line-height: 1.2; }
+    .suit-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 10px; }
+    .suit-tile { display: flex; align-items: center; gap: 10px; padding: 12px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); cursor: pointer; font-family: inherit; color: inherit; }
+    .suit-tile-ico { width: 36px; height: 44px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .suit-tile-ico svg { width: 36px; height: 44px; }
+    .suit-tile-info { flex: 1; text-align: left; min-width: 0; }
+    .suit-tile-name { font-size: 14px; font-weight: 500; margin: 0 0 2px; }
+    .suit-tile-sub { font-size: 11px; color: var(--color-text-secondary); margin: 0; }
+    .detail-hero { display: flex; justify-content: center; padding: 1rem 0 1.5rem; }
+    .detail-hero svg { max-width: 160px; height: auto; }
+    .detail-title { text-align: center; font-size: 24px; font-weight: 500; margin: 0 0 4px; font-family: var(--font-serif); }
+    .detail-sub { text-align: center; font-size: 13px; color: var(--color-text-secondary); margin: 0 0 1.5rem; letter-spacing: 0.5px; text-transform: uppercase; }
+    .detail-section { margin-bottom: 1rem; padding: 1.25rem; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); }
+    .detail-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 8px; letter-spacing: 0.5px; text-transform: uppercase; }
+    .detail-text { font-size: 15px; line-height: 1.7; margin: 0; color: var(--color-text-primary); }
+    .detail-text em { color: var(--color-text-secondary); font-style: italic; }
+    .tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; justify-content: center; }
+    .tag { font-size: 11px; padding: 4px 10px; border-radius: 999px; background: var(--color-background-secondary); color: var(--color-text-secondary); }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   </style>
 </head>
@@ -136,26 +144,15 @@
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const p = JSON.parse(raw);
-        return {
-          screen: 'home', li: 0, si: 0, lxp: 0, answered: false,
-          xp: Number(p.xp) || 0,
-          completed: new Set(Array.isArray(p.completed) ? p.completed : [])
-        };
+        return { mode: p.mode || 'lecciones', screen: 'home', li: 0, si: 0, lxp: 0, answered: false, xp: Number(p.xp) || 0, completed: new Set(Array.isArray(p.completed) ? p.completed : []), libScreen: 'home', libCard: null, libSearch: '', libSuit: null };
       }
     } catch (e) {}
-    return { screen: 'home', li: 0, si: 0, xp: 0, completed: new Set(), lxp: 0, answered: false };
+    return { mode:'lecciones', screen:'home', li:0, si:0, xp:0, completed:new Set(), lxp:0, answered:false, libScreen:'home', libCard:null, libSearch:'', libSuit:null };
   }
 
   function saveState() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({
-        xp: state.xp,
-        completed: [...state.completed],
-        v: 1
-      }));
-    } catch (e) {}
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify({ xp: state.xp, completed: [...state.completed], mode: state.mode, v: 3 })); } catch (e) {}
   }
-
   const MODULES = [
     {id: 1, t: "Módulo 1 · Fundamentos", s: "Las bases del tarot"},
     {id: 2, t: "Módulo 2 · Mirada junguiana", s: "El tarot como espejo psicológico"},
@@ -163,136 +160,418 @@
   ];
 
   const L = [
-    {m:1, t:"Los dos mundos", s:"Arcanos Mayores vs Menores",
-      sl:[
-        {t:'teach', v:'split', h:'78 cartas, dos mundos', b:'Un mazo de tarot tiene 78 cartas divididas en dos grupos que funcionan distinto. Cada uno cuenta un tipo de historia.'},
-        {t:'teach', v:'major', h:'Arcanos Mayores', b:'22 cartas numeradas del 0 al 21. Representan arquetipos y lecciones vitales — El Loco, La Muerte, El Mundo.'},
-        {t:'teach', v:'minors', h:'Arcanos Menores', b:'56 cartas divididas en 4 palos, parecido a una baraja. Hablan de la vida cotidiana: trabajo, emociones, decisiones.'},
-        {t:'q', q:'¿Cuántas cartas tiene un mazo completo?', o:['52','78','108','22'], a:1, e:'78 en total: 22 Mayores + 56 Menores.'},
-        {t:'q', q:'¿Cuántos Arcanos Mayores hay?', o:['12','21','22','56'], a:2, e:'Son 22, numeradas del 0 (El Loco) al 21 (El Mundo).'},
-        {t:'q', q:'¿En cuántos palos se dividen los Menores?', o:['2','4','6','8'], a:1, e:'Cuatro: Copas, Oros, Espadas y Bastos.'}
-      ]},
-    {m:1, t:"Los cuatro palos", s:"Copas, Oros, Espadas, Bastos",
-      sl:[
-        {t:'teach', v:'cup', h:'Copas — agua', b:'El mundo emocional: relaciones, sentimientos, intuición. Si salen muchas Copas en una tirada, el tema probablemente es afectivo.'},
-        {t:'teach', v:'coin', h:'Oros — tierra', b:'Lo material y concreto: trabajo, dinero, cuerpo, salud física. En algunos mazos se llaman Pentáculos.'},
-        {t:'teach', v:'sword', h:'Espadas — aire', b:'La mente y las ideas: pensamientos, decisiones, conflictos, verdad. Suele ser el palo más desafiante — trae claridad, a veces dolorosa.'},
-        {t:'teach', v:'wand', h:'Bastos — fuego', b:'Energía y acción: creatividad, pasión, proyectos, impulso. Donde las Copas sienten, los Bastos hacen.'},
-        {t:'q', q:'¿Qué palo se asocia a las emociones?', o:['Oros','Espadas','Copas','Bastos'], a:2, e:'Copas = agua = mundo afectivo.'},
-        {t:'q', q:'¿A qué elemento corresponden los Bastos?', o:['Aire','Fuego','Tierra','Agua'], a:1, e:'Bastos = fuego = acción, creatividad, pasión.'},
-        {t:'q', q:'Consultás sobre dinero y trabajo. ¿Qué palo esperás ver?', o:['Copas','Bastos','Espadas','Oros'], a:3, e:'Oros gobiernan lo material: trabajo, dinero, cuerpo.'}
-      ]},
-    {m:1, t:"Los primeros arquetipos", s:"El Loco, El Mago, La Sacerdotisa, La Emperatriz",
-      sl:[
-        {t:'teach', v:'c0', h:'El Loco (0)', b:'Inicia el viaje. Comienzos, salto al vacío, inocencia, confianza. No tiene número porque está fuera del orden — o lo contiene todo.'},
-        {t:'teach', v:'c1', h:'El Mago (I)', b:'Tiene las cuatro herramientas (los cuatro palos) sobre la mesa. Manifestación: tomar lo que tenés y hacer algo con eso.'},
-        {t:'teach', v:'c2', h:'La Sacerdotisa (II)', b:'La contraparte del Mago. Intuición, misterio, conocimiento interno. Si El Mago actúa hacia afuera, ella escucha hacia adentro.'},
-        {t:'teach', v:'c3', h:'La Emperatriz (III)', b:'Abundancia, fertilidad, creación material. Todo lo que crece, se nutre y da frutos — proyectos, cuerpos, relaciones maternas.'},
-        {t:'q', q:'¿Qué carta lleva el número 0?', o:['El Mago','El Loco','La Emperatriz','La Muerte'], a:1, e:'El Loco es el 0 — está antes (o después) de todo.'},
-        {t:'q', q:'El Mago representa principalmente…', o:['Intuición oculta','Manifestación y acción','Abundancia material','Comienzos inocentes'], a:1, e:'Tiene las herramientas para crear: manifiesta.'},
-        {t:'q', q:'La Sacerdotisa se conecta con…', o:['La acción externa','El dinero','La intuición','La guerra'], a:2, e:'Es el arquetipo del saber interno y silencioso.'}
-      ]},
-    {m:1, t:"Las cartas que asustan", s:"Y por qué no deberían",
-      sl:[
-        {t:'teach', v:'c13', h:'La Muerte (XIII)', b:'Casi nunca significa muerte literal. Transformación, fin de un ciclo para que otro empiece. Cambio necesario, aunque duela.'},
-        {t:'teach', v:'c15', h:'El Diablo (XV)', b:'No es el mal absoluto. Habla de ataduras autoimpuestas: adicciones, obsesiones, dependencias. Las cadenas suelen estar flojas.'},
-        {t:'teach', v:'c16', h:'La Torre (XVI)', b:'Ruptura repentina de una estructura que ya no servía. Incómoda, pero libera: derrumba lo construido sobre cimientos falsos.'},
-        {t:'teach', v:'c21', h:'El Mundo (XXI)', b:'La última carta del viaje. Plenitud, integración, cierre. El Loco salió al camino y llegó acá: completo.'},
-        {t:'q', q:'Si sale La Muerte, lo más probable es que indique…', o:['Muerte literal','Una transformación','Enfermedad','Mala suerte'], a:1, e:'Transformación, fin de un ciclo. Casi nunca es literal.'},
-        {t:'q', q:'El Diablo suele hablar de…', o:['Éxito financiero','Ataduras y dependencias','Un enemigo externo','Sanación emocional'], a:1, e:'Ataduras, muchas veces autoimpuestas.'},
-        {t:'q', q:'¿Cuál es la última carta del recorrido mayor?', o:['El Sol','El Juicio','El Mundo','La Estrella'], a:2, e:'El Mundo (XXI) cierra el viaje del Loco con plenitud.'}
-      ]},
-    {m:1, t:"Tu primera tirada", s:"Pasado, presente, futuro",
-      sl:[
-        {t:'teach', v:'spread', h:'Tres cartas, tres momentos', b:'La tirada más simple y usada. Se sacan tres cartas al azar y se interpretan una por una según la posición que ocupan.'},
-        {t:'teach', v:'pos1', h:'Carta 1 — Pasado', b:'Lo que ya ocurrió y afecta la situación actual. Raíces, causas, lo que traés contigo al tema que estás consultando.'},
-        {t:'teach', v:'pos2', h:'Carta 2 — Presente', b:'El momento actual: dónde estás parado, qué energía domina ahora. Suele ser la más importante de las tres.'},
-        {t:'teach', v:'pos3', h:'Carta 3 — Futuro o consejo', b:'Hacia dónde va la situación si todo sigue igual — o qué te conviene tener en cuenta. No es destino fijo; es tendencia.'},
-        {t:'q', q:'¿Cuántas cartas se usan en esta tirada?', o:['1','3','5','10'], a:1, e:'Tres cartas, una por posición.'},
-        {t:'q', q:'La primera posición suele representar…', o:['El futuro','El consejo','El pasado','Al consultante'], a:2, e:'Lo que viene de atrás y alimenta la situación.'},
-        {t:'q', q:'La tercera carta se lee como…', o:['Algo fijo que pasará','Una tendencia o consejo','El pasado olvidado','La verdad absoluta'], a:1, e:'Una dirección probable — no un destino sellado.'}
-      ]},
-
-    {m:2, t:"Arquetipos universales", s:"El inconsciente colectivo y el tarot",
-      sl:[
-        {t:'teach', v:'archetypes', h:'El inconsciente colectivo', b:'Jung propuso que bajo nuestra psique personal hay una capa más profunda, compartida con toda la humanidad. Ahí viven los arquetipos: imágenes primordiales que aparecen en mitos, sueños y cuentos de todas las culturas.'},
-        {t:'teach', v:'c0', h:'El tarot como catálogo', b:'Para la lectura junguiana, cada Arcano Mayor es un arquetipo en estado puro: el Héroe (El Mago), la Gran Madre (La Emperatriz), el Viejo Sabio (El Ermitaño), la Sombra (El Diablo). El mazo entero es un mapa del alma.'},
-        {t:'teach', v:'c2', h:'Leer es dialogar', b:'Desde esta mirada, no consultás al tarot para predecir el futuro. Consultás para activar material del inconsciente: lo que veas en las cartas te dice más sobre tu psique que sobre los hechos.'},
-        {t:'q', q:'¿Qué es el inconsciente colectivo para Jung?', o:['Un archivo de tus recuerdos olvidados','Una capa de la psique compartida con la humanidad','Lo mismo que el ego','Una invención moderna'], a:1, e:'Una capa profunda que Jung observaba común a todos los humanos.'},
-        {t:'q', q:'Un Arcano Mayor, visto desde Jung, es…', o:['Una predicción','Un arquetipo en estado puro','Un mensaje divino','Un número de la suerte'], a:1, e:'Cada Mayor encarna una imagen primordial del alma.'},
-        {t:'q', q:'El objetivo de una lectura junguiana es…', o:['Adivinar qué pasará','Activar material del inconsciente','Contactar espíritus','Calcular ciclos astrales'], a:1, e:'El tarot funciona como espejo: refleja lo que ya está dentro tuyo.'}
-      ]},
-    {m:2, t:"El viaje del Loco", s:"La individuación como proceso",
-      sl:[
-        {t:'teach', v:'individuation', h:'Las tres fases', b:'Jung llamó individuación al proceso de volverse uno mismo integrando todas las partes de la psique. El recorrido del Loco por los 22 Mayores dibuja ese camino en tres fases.'},
-        {t:'teach', v:'c3', h:'Fase I (I–VII): El yo social', b:'El Loco construye identidad y aprende las reglas del mundo: Mago, Sacerdotisa, Emperatriz, Emperador, Papa, Enamorados, Carro. Es la primera mitad del día.'},
-        {t:'teach', v:'c13', h:'Fase II (VIII–XIV): El descenso', b:'Entra en territorio profundo: Justicia, Ermitaño, Rueda, Fuerza, Colgado, Muerte, Templanza. Acá se derrumban certezas y aparece lo inconsciente.'},
-        {t:'teach', v:'c21', h:'Fase III (XV–XXI): La integración', b:'Trabajo con la Sombra y regreso a la luz: Diablo, Torre, Estrella, Luna, Sol, Juicio, Mundo. La meta no es ser perfecto — es ser completo.'},
-        {t:'q', q:'¿Qué es la individuación?', o:['Aislarse de la gente','Volverse uno mismo integrando todas las partes','Memorizar los 22 Mayores','Separarse del cuerpo'], a:1, e:'Es el proceso de integrar lo consciente y lo inconsciente.'},
-        {t:'q', q:'¿Cuántas fases tiene el viaje del Loco?', o:['2','3','7','22'], a:1, e:'Tres: yo social, descenso, integración.'},
-        {t:'q', q:'La meta de la individuación es ser…', o:['Perfecto','Completo','Puro','Invulnerable'], a:1, e:'Jung distingue completitud (todo integrado) de perfección (sin defectos).'}
-      ]},
-    {m:2, t:"Las cuatro funciones psíquicas", s:"Pensar, sentir, sensación, intuición",
-      sl:[
-        {t:'teach', v:'functions', h:'Cuatro formas de procesar', b:'Jung identificó cuatro funciones psíquicas: pensar, sentir, sensación, intuición. Cada persona favorece una y tiene otra en la sombra. Los cuatro palos del tarot las reflejan con sorprendente precisión.'},
-        {t:'teach', v:'sword', h:'Espadas = Pensar', b:'La función racional-lógica. Analiza, clasifica, decide por criterios. Demasiadas espadas en una tirada pueden indicar sobreintelectualización.'},
-        {t:'teach', v:'cup', h:'Copas = Sentir', b:'Otra función racional, pero distinta: valora por preferencia, amor, rechazo. No confundir con emoción — es el modo de juzgar "esto me gusta/no me gusta".'},
-        {t:'teach', v:'coin', h:'Oros = Sensación · Bastos = Intuición', b:'Funciones irracionales (perceptivas): Sensación (Oros) capta lo concreto — cuerpo, materia, aquí y ahora. Intuición (Bastos) capta posibilidades, lo que podría ser.'},
-        {t:'q', q:'¿Qué función corresponde a Espadas?', o:['Sentir','Pensar','Sensación','Intuición'], a:1, e:'Espadas = aire = mente analítica.'},
-        {t:'q', q:'La intuición junguiana se mapea en…', o:['Copas','Oros','Espadas','Bastos'], a:3, e:'Bastos = fuego = captar posibilidades, corazonadas.'},
-        {t:'q', q:'Una tirada llena de Oros sugiere dominio de…', o:['Lo abstracto','Lo concreto y corporal','La fantasía','El conflicto mental'], a:1, e:'Sensación: lo palpable, el cuerpo, la materia.'}
-      ]},
-    {m:2, t:"La Sombra en el tarot", s:"Lo que no querés ver tiene mucho que decir",
-      sl:[
-        {t:'teach', v:'shadow', h:'La Sombra', b:'Todo lo que rechazás o no reconocés de vos mismo. No es solo "lo malo": también contiene cualidades no desarrolladas, potenciales enterrados — lo que Jung llamaba la Sombra dorada.'},
-        {t:'teach', v:'c15', h:'Cartas sombrías', b:'Ciertas cartas activan material sombrío con fuerza: El Diablo (ataduras inconscientes), La Torre (derrumbe de la máscara), La Luna (miedos irracionales), La Muerte (lo que no querés soltar).'},
-        {t:'teach', v:'c16', h:'Integrar, no eliminar', b:'El trabajo junguiano no es destruir la sombra — es reconocerla y ampliar el yo. Cuando sale una de estas cartas, no es mala noticia: es invitación a mirar lo que venías evitando.'},
-        {t:'q', q:'La Sombra contiene…', o:['Solo lo negativo','Lo rechazado, positivo y negativo','Los pecados','Memorias de vidas pasadas'], a:1, e:'Incluye también cualidades no desarrolladas — la "Sombra dorada".'},
-        {t:'q', q:'¿Qué carta activa material sombrío de forma especialmente clara?', o:['El Sol','La Estrella','El Diablo','La Emperatriz'], a:2, e:'El Diablo apunta a ataduras que muchas veces no vemos.'},
-        {t:'q', q:'Integrar la Sombra significa…', o:['Eliminarla','Reconocerla y ampliar el yo','Encerrarla','Rezar por ella'], a:1, e:'El objetivo es ser completo, no puro.'}
-      ]},
-
-    {m:3, t:"¿Por qué el Marsella?", s:"El mazo que eligió Jodorowsky",
-      sl:[
-        {t:'teach', v:'marsella', h:'El tarot "verdadero"', b:'Jodorowsky trabaja exclusivamente con el Tarot de Marsella. Para él, es el tarot tradicional y simbólico por excelencia: sin adornos narrativos modernos, cada detalle —posición, color, número, dirección de la mirada— tiene significado.'},
-        {t:'teach', v:'mandala', h:'Un mandala psicológico', b:'No es un libro de horóscopos: es un mandala del alma. Cada carta es un fragmento de la psique humana. El mazo entero forma un mapa completo del ser.'},
-        {t:'teach', v:'camoin', h:'La restauración con Camoin', b:'Jodorowsky dedicó décadas a restaurar un Marsella fiel a las versiones del siglo XVII, trabajando con Philippe Camoin, descendiente de una antigua familia de cartomancistas de Marsella.'},
-        {t:'q', q:'¿Qué mazo usa Jodorowsky?', o:['Rider-Waite','Thoth','Marsella','Visconti-Sforza'], a:2, e:'El Tarot de Marsella, en la versión Camoin-Jodorowsky.'},
-        {t:'q', q:'Para Jodo, el Marsella es…', o:['Un juego de azar','Un mandala psicológico','Un oráculo egipcio','Una creación moderna'], a:1, e:'Un mapa simbólico del alma humana.'},
-        {t:'q', q:'¿Con quién restauró el mazo?', o:['Carl Jung','Philippe Camoin','Arthur Waite','Aleister Crowley'], a:1, e:'Con Philippe Camoin, descendiente de la tradición marsellesa.'}
-      ]},
-    {m:3, t:"Los 7 colores del Marsella", s:"Cada color habla",
-      sl:[
-        {t:'teach', v:'colors', h:'El lenguaje cromático', b:'El Marsella usa 7 colores principales, cada uno con un significado simbólico preciso. Leer el mazo implica leer también sus colores — dónde se concentran, cómo se combinan.'},
-        {t:'teach', v:'color_yellow', h:'Amarillo · Rojo', b:'Amarillo: inteligencia activa, energía consciente, luz divina. Rojo: pasión, instinto, vida corporal, impulso vital. Son los dos polos masculinos del mazo.'},
-        {t:'teach', v:'color_blue', h:'Azul · Verde', b:'Azul: espiritualidad receptiva, emociones, paz, lo femenino celeste. Verde: crecimiento vegetal, potencial, lo que germina pero todavía no florece.'},
-        {t:'teach', v:'color_bwf', h:'Blanco · Negro · Carne', b:'Blanco: pureza, apertura, luz primordial. Negro: materia, misterio, lo oculto (no es "malo" — es lo denso). Color carne: humanidad, piel, lo sensible.'},
-        {t:'q', q:'¿Qué color representa la pasión y el instinto?', o:['Azul','Rojo','Verde','Amarillo'], a:1, e:'Rojo: vida corporal, impulso, fuego vital.'},
-        {t:'q', q:'El azul en el Marsella simboliza…', o:['Energía activa','Espiritualidad y emociones','Materia densa','La sombra'], a:1, e:'Receptividad espiritual, paz, lo femenino celeste.'},
-        {t:'q', q:'¿Cuántos colores principales usa el Marsella?', o:['3','5','7','12'], a:2, e:'Siete: amarillo, rojo, azul, verde, blanco, negro y carne.'}
-      ]},
-    {m:3, t:"La numerología del tarot", s:"Del 1 al 10 como proceso",
-      sl:[
-        {t:'teach', v:'numerology', h:'Números como etapas', b:'Para Jodorowsky, los números del 1 al 10 no son meras cantidades: son etapas de cualquier proceso. El As es semilla, el 10 es cumbre y pasaje. Cada número tiene una energía propia que colorea al palo.'},
-        {t:'teach', v:'num123', h:'1 · 2 · 3  (siembra)', b:'1: impulso inicial, potencial puro, semilla. 2: dualidad, acumulación, espera receptiva. 3: explosión creativa, salida al mundo, primera manifestación.'},
-        {t:'teach', v:'num456', h:'4 · 5 · 6  (estabilización)', b:'4: estructura, estabilidad, casa construida. 5: crisis necesaria, tentación, ruptura del equilibrio. 6: belleza, placer, reencuentro armónico.'},
-        {t:'teach', v:'num78910', h:'7 · 8 · 9 · 10  (maduración)', b:'7: acción en el mundo, movimiento. 8: perfección, equilibrio logrado. 9: crisis luminosa, fin de ciclo, soledad fértil. 10: cumbre y pasaje al ciclo siguiente.'},
-        {t:'q', q:'Para Jodorowsky, el número 5 representa…', o:['Estabilidad','Crisis necesaria','Semilla','Perfección'], a:1, e:'5 es la tentación, la ruptura del equilibrio que empuja a crecer.'},
-        {t:'q', q:'El 4 simboliza…', o:['Comienzo','Estructura y estabilidad','Crisis','Cumbre'], a:1, e:'Es la casa construida, los cimientos firmes.'},
-        {t:'q', q:'El 10 es…', o:['El final definitivo','Cumbre y pasaje al próximo ciclo','Un número de mala suerte','Igual al 1'], a:1, e:'Cierra un ciclo completo y abre el siguiente.'}
-      ]},
-    {m:3, t:"Leer en relación", s:"Cartas en diálogo, el cuerpo del tarot",
-      sl:[
-        {t:'teach', v:'pairs', h:'Nunca cartas aisladas', b:'Para Jodorowsky, una carta sola dice poco. El sentido emerge de la relación: dos cartas que se miran dialogan, dos que se dan la espalda se ignoran. La postura y la dirección importan tanto como el símbolo.'},
-        {t:'teach', v:'body', h:'El cuerpo del tarot', b:'Jodo propone ubicar cartas en zonas del cuerpo para diagnosticar desequilibrios: cabeza (pensar), pecho (sentir), vientre (hacer), sexo (crear). Una zona "tapada" por ciertas cartas señala qué está bloqueado.'},
-        {t:'teach', v:'psicomagia', h:'Psicomagia', b:'Su aporte más radical: el tarot no termina en el diagnóstico. De la lectura sale un acto simbólico —la psicomagia— que el consultante realiza para que el inconsciente reciba el mensaje en su propio lenguaje: imágenes, gestos, objetos.'},
-        {t:'q', q:'Para Jodo, una carta sola…', o:['Es lo único que importa','Dice poco sin las demás','Revela el futuro','Nunca se interpreta'], a:1, e:'El sentido emerge de la relación entre cartas.'},
-        {t:'q', q:'En el cuerpo del tarot, el "pecho" se asocia a…', o:['Pensar','Sentir','Hacer','Crear'], a:1, e:'Cabeza = pensar, pecho = sentir, vientre = hacer, sexo = crear.'},
-        {t:'q', q:'La psicomagia es…', o:['Una predicción mágica','Un acto simbólico terapéutico','Un hechizo de amor','Una forma de adivinación'], a:1, e:'Un acto ritual que traduce la lectura al lenguaje del inconsciente.'}
-      ]}
+    {m:1, t:"Los dos mundos", s:"Arcanos Mayores vs Menores", sl:[
+      {t:'teach', v:'split', h:'78 cartas, dos mundos', b:'Un mazo de tarot tiene 78 cartas divididas en dos grupos que funcionan distinto. Cada uno cuenta un tipo de historia.'},
+      {t:'teach', v:'major', h:'Arcanos Mayores', b:'22 cartas numeradas del 0 al 21. Representan arquetipos y lecciones vitales — El Loco, La Muerte, El Mundo.'},
+      {t:'teach', v:'minors', h:'Arcanos Menores', b:'56 cartas divididas en 4 palos, parecido a una baraja. Hablan de la vida cotidiana: trabajo, emociones, decisiones.'},
+      {t:'q', q:'¿Cuántas cartas tiene un mazo completo?', o:['52','78','108','22'], a:1, e:'78 en total: 22 Mayores + 56 Menores.'},
+      {t:'q', q:'¿Cuántos Arcanos Mayores hay?', o:['12','21','22','56'], a:2, e:'Son 22, numeradas del 0 (El Loco) al 21 (El Mundo).'},
+      {t:'q', q:'¿En cuántos palos se dividen los Menores?', o:['2','4','6','8'], a:1, e:'Cuatro: Copas, Oros, Espadas y Bastos.'}
+    ]},
+    {m:1, t:"Los cuatro palos", s:"Copas, Oros, Espadas, Bastos", sl:[
+      {t:'teach', v:'cup', h:'Copas — agua', b:'El mundo emocional: relaciones, sentimientos, intuición. Si salen muchas Copas en una tirada, el tema probablemente es afectivo.'},
+      {t:'teach', v:'coin', h:'Oros — tierra', b:'Lo material y concreto: trabajo, dinero, cuerpo, salud física. En algunos mazos se llaman Pentáculos.'},
+      {t:'teach', v:'sword', h:'Espadas — aire', b:'La mente y las ideas: pensamientos, decisiones, conflictos, verdad. Suele ser el palo más desafiante — trae claridad, a veces dolorosa.'},
+      {t:'teach', v:'wand', h:'Bastos — fuego', b:'Energía y acción: creatividad, pasión, proyectos, impulso. Donde las Copas sienten, los Bastos hacen.'},
+      {t:'q', q:'¿Qué palo se asocia a las emociones?', o:['Oros','Espadas','Copas','Bastos'], a:2, e:'Copas = agua = mundo afectivo.'},
+      {t:'q', q:'¿A qué elemento corresponden los Bastos?', o:['Aire','Fuego','Tierra','Agua'], a:1, e:'Bastos = fuego = acción, creatividad, pasión.'},
+      {t:'q', q:'Consultás sobre dinero y trabajo. ¿Qué palo esperás ver?', o:['Copas','Bastos','Espadas','Oros'], a:3, e:'Oros gobiernan lo material: trabajo, dinero, cuerpo.'}
+    ]},
+    {m:1, t:"Los primeros arquetipos", s:"El Loco, El Mago, La Sacerdotisa, La Emperatriz", sl:[
+      {t:'teach', v:'c0', h:'El Loco (0)', b:'Inicia el viaje. Comienzos, salto al vacío, inocencia, confianza. No tiene número porque está fuera del orden — o lo contiene todo.'},
+      {t:'teach', v:'c1', h:'El Mago (I)', b:'Tiene las cuatro herramientas (los cuatro palos) sobre la mesa. Manifestación: tomar lo que tenés y hacer algo con eso.'},
+      {t:'teach', v:'c2', h:'La Sacerdotisa (II)', b:'La contraparte del Mago. Intuición, misterio, conocimiento interno. Si El Mago actúa hacia afuera, ella escucha hacia adentro.'},
+      {t:'teach', v:'c3', h:'La Emperatriz (III)', b:'Abundancia, fertilidad, creación material. Todo lo que crece, se nutre y da frutos — proyectos, cuerpos, relaciones maternas.'},
+      {t:'q', q:'¿Qué carta lleva el número 0?', o:['El Mago','El Loco','La Emperatriz','La Muerte'], a:1, e:'El Loco es el 0 — está antes (o después) de todo.'},
+      {t:'q', q:'El Mago representa principalmente…', o:['Intuición oculta','Manifestación y acción','Abundancia material','Comienzos inocentes'], a:1, e:'Tiene las herramientas para crear: manifiesta.'},
+      {t:'q', q:'La Sacerdotisa se conecta con…', o:['La acción externa','El dinero','La intuición','La guerra'], a:2, e:'Es el arquetipo del saber interno y silencioso.'}
+    ]},
+    {m:1, t:"Las cartas que asustan", s:"Y por qué no deberían", sl:[
+      {t:'teach', v:'c13', h:'La Muerte (XIII)', b:'Casi nunca significa muerte literal. Transformación, fin de un ciclo para que otro empiece. Cambio necesario, aunque duela.'},
+      {t:'teach', v:'c15', h:'El Diablo (XV)', b:'No es el mal absoluto. Habla de ataduras autoimpuestas: adicciones, obsesiones, dependencias. Las cadenas suelen estar flojas.'},
+      {t:'teach', v:'c16', h:'La Torre (XVI)', b:'Ruptura repentina de una estructura que ya no servía. Incómoda, pero libera: derrumba lo construido sobre cimientos falsos.'},
+      {t:'teach', v:'c21', h:'El Mundo (XXI)', b:'La última carta del viaje. Plenitud, integración, cierre. El Loco salió al camino y llegó acá: completo.'},
+      {t:'q', q:'Si sale La Muerte, lo más probable es que indique…', o:['Muerte literal','Una transformación','Enfermedad','Mala suerte'], a:1, e:'Transformación, fin de un ciclo. Casi nunca es literal.'},
+      {t:'q', q:'El Diablo suele hablar de…', o:['Éxito financiero','Ataduras y dependencias','Un enemigo externo','Sanación emocional'], a:1, e:'Ataduras, muchas veces autoimpuestas.'},
+      {t:'q', q:'¿Cuál es la última carta del recorrido mayor?', o:['El Sol','El Juicio','El Mundo','La Estrella'], a:2, e:'El Mundo (XXI) cierra el viaje del Loco con plenitud.'}
+    ]},
+    {m:1, t:"Tu primera tirada", s:"Pasado, presente, futuro", sl:[
+      {t:'teach', v:'spread', h:'Tres cartas, tres momentos', b:'La tirada más simple y usada. Se sacan tres cartas al azar y se interpretan una por una según la posición que ocupan.'},
+      {t:'teach', v:'pos1', h:'Carta 1 — Pasado', b:'Lo que ya ocurrió y afecta la situación actual. Raíces, causas, lo que traés contigo al tema que estás consultando.'},
+      {t:'teach', v:'pos2', h:'Carta 2 — Presente', b:'El momento actual: dónde estás parado, qué energía domina ahora. Suele ser la más importante de las tres.'},
+      {t:'teach', v:'pos3', h:'Carta 3 — Futuro o consejo', b:'Hacia dónde va la situación si todo sigue igual — o qué te conviene tener en cuenta. No es destino fijo; es tendencia.'},
+      {t:'q', q:'¿Cuántas cartas se usan en esta tirada?', o:['1','3','5','10'], a:1, e:'Tres cartas, una por posición.'},
+      {t:'q', q:'La primera posición suele representar…', o:['El futuro','El consejo','El pasado','Al consultante'], a:2, e:'Lo que viene de atrás y alimenta la situación.'},
+      {t:'q', q:'La tercera carta se lee como…', o:['Algo fijo que pasará','Una tendencia o consejo','El pasado olvidado','La verdad absoluta'], a:1, e:'Una dirección probable — no un destino sellado.'}
+    ]},
+    {m:2, t:"Arquetipos universales", s:"El inconsciente colectivo y el tarot", sl:[
+      {t:'teach', v:'archetypes', h:'El inconsciente colectivo', b:'Jung propuso que bajo nuestra psique personal hay una capa más profunda, compartida con toda la humanidad. Ahí viven los arquetipos: imágenes primordiales que aparecen en mitos, sueños y cuentos de todas las culturas.'},
+      {t:'teach', v:'c0', h:'El tarot como catálogo', b:'Para la lectura junguiana, cada Arcano Mayor es un arquetipo en estado puro: el Héroe (El Mago), la Gran Madre (La Emperatriz), el Viejo Sabio (El Ermitaño), la Sombra (El Diablo). El mazo entero es un mapa del alma.'},
+      {t:'teach', v:'c2', h:'Leer es dialogar', b:'Desde esta mirada, no consultás al tarot para predecir el futuro. Consultás para activar material del inconsciente: lo que veas en las cartas te dice más sobre tu psique que sobre los hechos.'},
+      {t:'q', q:'¿Qué es el inconsciente colectivo para Jung?', o:['Un archivo de tus recuerdos olvidados','Una capa de la psique compartida con la humanidad','Lo mismo que el ego','Una invención moderna'], a:1, e:'Una capa profunda que Jung observaba común a todos los humanos.'},
+      {t:'q', q:'Un Arcano Mayor, visto desde Jung, es…', o:['Una predicción','Un arquetipo en estado puro','Un mensaje divino','Un número de la suerte'], a:1, e:'Cada Mayor encarna una imagen primordial del alma.'},
+      {t:'q', q:'El objetivo de una lectura junguiana es…', o:['Adivinar qué pasará','Activar material del inconsciente','Contactar espíritus','Calcular ciclos astrales'], a:1, e:'El tarot funciona como espejo: refleja lo que ya está dentro tuyo.'}
+    ]},
+    {m:2, t:"El viaje del Loco", s:"La individuación como proceso", sl:[
+      {t:'teach', v:'individuation', h:'Las tres fases', b:'Jung llamó individuación al proceso de volverse uno mismo integrando todas las partes de la psique. El recorrido del Loco por los 22 Mayores dibuja ese camino en tres fases.'},
+      {t:'teach', v:'c3', h:'Fase I (I–VII): El yo social', b:'El Loco construye identidad y aprende las reglas del mundo: Mago, Sacerdotisa, Emperatriz, Emperador, Papa, Enamorados, Carro. Es la primera mitad del día.'},
+      {t:'teach', v:'c13', h:'Fase II (VIII–XIV): El descenso', b:'Entra en territorio profundo: Justicia, Ermitaño, Rueda, Fuerza, Colgado, Muerte, Templanza. Acá se derrumban certezas y aparece lo inconsciente.'},
+      {t:'teach', v:'c21', h:'Fase III (XV–XXI): La integración', b:'Trabajo con la Sombra y regreso a la luz: Diablo, Torre, Estrella, Luna, Sol, Juicio, Mundo. La meta no es ser perfecto — es ser completo.'},
+      {t:'q', q:'¿Qué es la individuación?', o:['Aislarse de la gente','Volverse uno mismo integrando todas las partes','Memorizar los 22 Mayores','Separarse del cuerpo'], a:1, e:'Es el proceso de integrar lo consciente y lo inconsciente.'},
+      {t:'q', q:'¿Cuántas fases tiene el viaje del Loco?', o:['2','3','7','22'], a:1, e:'Tres: yo social, descenso, integración.'},
+      {t:'q', q:'La meta de la individuación es ser…', o:['Perfecto','Completo','Puro','Invulnerable'], a:1, e:'Jung distingue completitud (todo integrado) de perfección (sin defectos).'}
+    ]},
+    {m:2, t:"Las cuatro funciones psíquicas", s:"Pensar, sentir, sensación, intuición", sl:[
+      {t:'teach', v:'functions', h:'Cuatro formas de procesar', b:'Jung identificó cuatro funciones psíquicas: pensar, sentir, sensación, intuición. Cada persona favorece una y tiene otra en la sombra. Los cuatro palos del tarot las reflejan con sorprendente precisión.'},
+      {t:'teach', v:'sword', h:'Espadas = Pensar', b:'La función racional-lógica. Analiza, clasifica, decide por criterios. Demasiadas espadas en una tirada pueden indicar sobreintelectualización.'},
+      {t:'teach', v:'cup', h:'Copas = Sentir', b:'Otra función racional, pero distinta: valora por preferencia, amor, rechazo. No confundir con emoción — es el modo de juzgar "esto me gusta/no me gusta".'},
+      {t:'teach', v:'coin', h:'Oros = Sensación · Bastos = Intuición', b:'Funciones irracionales (perceptivas): Sensación (Oros) capta lo concreto — cuerpo, materia, aquí y ahora. Intuición (Bastos) capta posibilidades, lo que podría ser.'},
+      {t:'q', q:'¿Qué función corresponde a Espadas?', o:['Sentir','Pensar','Sensación','Intuición'], a:1, e:'Espadas = aire = mente analítica.'},
+      {t:'q', q:'La intuición junguiana se mapea en…', o:['Copas','Oros','Espadas','Bastos'], a:3, e:'Bastos = fuego = captar posibilidades, corazonadas.'},
+      {t:'q', q:'Una tirada llena de Oros sugiere dominio de…', o:['Lo abstracto','Lo concreto y corporal','La fantasía','El conflicto mental'], a:1, e:'Sensación: lo palpable, el cuerpo, la materia.'}
+    ]},
+    {m:2, t:"La Sombra en el tarot", s:"Lo que no querés ver tiene mucho que decir", sl:[
+      {t:'teach', v:'shadow', h:'La Sombra', b:'Todo lo que rechazás o no reconocés de vos mismo. No es solo "lo malo": también contiene cualidades no desarrolladas, potenciales enterrados — lo que Jung llamaba la Sombra dorada.'},
+      {t:'teach', v:'c15', h:'Cartas sombrías', b:'Ciertas cartas activan material sombrío con fuerza: El Diablo (ataduras inconscientes), La Torre (derrumbe de la máscara), La Luna (miedos irracionales), La Muerte (lo que no querés soltar).'},
+      {t:'teach', v:'c16', h:'Integrar, no eliminar', b:'El trabajo junguiano no es destruir la sombra — es reconocerla y ampliar el yo. Cuando sale una de estas cartas, no es mala noticia: es invitación a mirar lo que venías evitando.'},
+      {t:'q', q:'La Sombra contiene…', o:['Solo lo negativo','Lo rechazado, positivo y negativo','Los pecados','Memorias de vidas pasadas'], a:1, e:'Incluye también cualidades no desarrolladas — la "Sombra dorada".'},
+      {t:'q', q:'¿Qué carta activa material sombrío de forma especialmente clara?', o:['El Sol','La Estrella','El Diablo','La Emperatriz'], a:2, e:'El Diablo apunta a ataduras que muchas veces no vemos.'},
+      {t:'q', q:'Integrar la Sombra significa…', o:['Eliminarla','Reconocerla y ampliar el yo','Encerrarla','Rezar por ella'], a:1, e:'El objetivo es ser completo, no puro.'}
+    ]},
+    {m:3, t:"¿Por qué el Marsella?", s:"El mazo que eligió Jodorowsky", sl:[
+      {t:'teach', v:'marsella', h:'El tarot "verdadero"', b:'Jodorowsky trabaja exclusivamente con el Tarot de Marsella. Para él, es el tarot tradicional y simbólico por excelencia: sin adornos narrativos modernos, cada detalle —posición, color, número, dirección de la mirada— tiene significado.'},
+      {t:'teach', v:'mandala', h:'Un mandala psicológico', b:'No es un libro de horóscopos: es un mandala del alma. Cada carta es un fragmento de la psique humana. El mazo entero forma un mapa completo del ser.'},
+      {t:'teach', v:'camoin', h:'La restauración con Camoin', b:'Jodorowsky dedicó décadas a restaurar un Marsella fiel a las versiones del siglo XVII, trabajando con Philippe Camoin, descendiente de una antigua familia de cartomancistas de Marsella.'},
+      {t:'q', q:'¿Qué mazo usa Jodorowsky?', o:['Rider-Waite','Thoth','Marsella','Visconti-Sforza'], a:2, e:'El Tarot de Marsella, en la versión Camoin-Jodorowsky.'},
+      {t:'q', q:'Para Jodo, el Marsella es…', o:['Un juego de azar','Un mandala psicológico','Un oráculo egipcio','Una creación moderna'], a:1, e:'Un mapa simbólico del alma humana.'},
+      {t:'q', q:'¿Con quién restauró el mazo?', o:['Carl Jung','Philippe Camoin','Arthur Waite','Aleister Crowley'], a:1, e:'Con Philippe Camoin, descendiente de la tradición marsellesa.'}
+    ]},
+    {m:3, t:"Los 7 colores del Marsella", s:"Cada color habla", sl:[
+      {t:'teach', v:'colors', h:'El lenguaje cromático', b:'El Marsella usa 7 colores principales, cada uno con un significado simbólico preciso. Leer el mazo implica leer también sus colores — dónde se concentran, cómo se combinan.'},
+      {t:'teach', v:'color_yellow', h:'Amarillo · Rojo', b:'Amarillo: inteligencia activa, energía consciente, luz divina. Rojo: pasión, instinto, vida corporal, impulso vital. Son los dos polos masculinos del mazo.'},
+      {t:'teach', v:'color_blue', h:'Azul · Verde', b:'Azul: espiritualidad receptiva, emociones, paz, lo femenino celeste. Verde: crecimiento vegetal, potencial, lo que germina pero todavía no florece.'},
+      {t:'teach', v:'color_bwf', h:'Blanco · Negro · Carne', b:'Blanco: pureza, apertura, luz primordial. Negro: materia, misterio, lo oculto (no es "malo" — es lo denso). Color carne: humanidad, piel, lo sensible.'},
+      {t:'q', q:'¿Qué color representa la pasión y el instinto?', o:['Azul','Rojo','Verde','Amarillo'], a:1, e:'Rojo: vida corporal, impulso, fuego vital.'},
+      {t:'q', q:'El azul en el Marsella simboliza…', o:['Energía activa','Espiritualidad y emociones','Materia densa','La sombra'], a:1, e:'Receptividad espiritual, paz, lo femenino celeste.'},
+      {t:'q', q:'¿Cuántos colores principales usa el Marsella?', o:['3','5','7','12'], a:2, e:'Siete: amarillo, rojo, azul, verde, blanco, negro y carne.'}
+    ]},
+    {m:3, t:"La numerología del tarot", s:"Del 1 al 10 como proceso", sl:[
+      {t:'teach', v:'numerology', h:'Números como etapas', b:'Para Jodorowsky, los números del 1 al 10 no son meras cantidades: son etapas de cualquier proceso. El As es semilla, el 10 es cumbre y pasaje. Cada número tiene una energía propia que colorea al palo.'},
+      {t:'teach', v:'num123', h:'1 · 2 · 3  (siembra)', b:'1: impulso inicial, potencial puro, semilla. 2: dualidad, acumulación, espera receptiva. 3: explosión creativa, salida al mundo, primera manifestación.'},
+      {t:'teach', v:'num456', h:'4 · 5 · 6  (estabilización)', b:'4: estructura, estabilidad, casa construida. 5: crisis necesaria, tentación, ruptura del equilibrio. 6: belleza, placer, reencuentro armónico.'},
+      {t:'teach', v:'num78910', h:'7 · 8 · 9 · 10  (maduración)', b:'7: acción en el mundo, movimiento. 8: perfección, equilibrio logrado. 9: crisis luminosa, fin de ciclo, soledad fértil. 10: cumbre y pasaje al ciclo siguiente.'},
+      {t:'q', q:'Para Jodorowsky, el número 5 representa…', o:['Estabilidad','Crisis necesaria','Semilla','Perfección'], a:1, e:'5 es la tentación, la ruptura del equilibrio que empuja a crecer.'},
+      {t:'q', q:'El 4 simboliza…', o:['Comienzo','Estructura y estabilidad','Crisis','Cumbre'], a:1, e:'Es la casa construida, los cimientos firmes.'},
+      {t:'q', q:'El 10 es…', o:['El final definitivo','Cumbre y pasaje al próximo ciclo','Un número de mala suerte','Igual al 1'], a:1, e:'Cierra un ciclo completo y abre el siguiente.'}
+    ]},
+    {m:3, t:"Leer en relación", s:"Cartas en diálogo, el cuerpo del tarot", sl:[
+      {t:'teach', v:'pairs', h:'Nunca cartas aisladas', b:'Para Jodorowsky, una carta sola dice poco. El sentido emerge de la relación: dos cartas que se miran dialogan, dos que se dan la espalda se ignoran. La postura y la dirección importan tanto como el símbolo.'},
+      {t:'teach', v:'body', h:'El cuerpo del tarot', b:'Jodo propone ubicar cartas en zonas del cuerpo para diagnosticar desequilibrios: cabeza (pensar), pecho (sentir), vientre (hacer), sexo (crear). Una zona "tapada" por ciertas cartas señala qué está bloqueado.'},
+      {t:'teach', v:'psicomagia', h:'Psicomagia', b:'Su aporte más radical: el tarot no termina en el diagnóstico. De la lectura sale un acto simbólico —la psicomagia— que el consultante realiza para que el inconsciente reciba el mensaje en su propio lenguaje: imágenes, gestos, objetos.'},
+      {t:'q', q:'Para Jodo, una carta sola…', o:['Es lo único que importa','Dice poco sin las demás','Revela el futuro','Nunca se interpreta'], a:1, e:'El sentido emerge de la relación entre cartas.'},
+      {t:'q', q:'En el cuerpo del tarot, el "pecho" se asocia a…', o:['Pensar','Sentir','Hacer','Crear'], a:1, e:'Cabeza = pensar, pecho = sentir, vientre = hacer, sexo = crear.'},
+      {t:'q', q:'La psicomagia es…', o:['Una predicción mágica','Un acto simbólico terapéutico','Un hechizo de amor','Una forma de adivinación'], a:1, e:'Un acto ritual que traduce la lectura al lenguaje del inconsciente.'}
+    ]}
   ];
 
-  // ─── Visuals ───
+  const LIB_MAJORS = [
+    { num:'0', name:'El Loco', accent:'amber', ill:'loco', tags:['Inicio','Libertad','Salto'],
+      essence:'El vagabundo sin número, el inclasificable. Comienzo absoluto, pura energía sin domesticar. No tiene casilla porque se pasea por todas las demás cartas.',
+      jung:'Arquetipo del Vagabundo. Según Nichols, evoca reacción emocional fuerte porque toca un aspecto no integrado: lo que rechazás del loco suele ser lo que no te permitís ser. Si te irrita, hay Sombra ahí; si te atrae, hay algo no vivido que pide espacio.',
+      jodo:'Energía pura, libre, no contaminada por roles ni estructuras. La fuerza creadora antes de toda forma. Jodo lo ve como la capacidad de comenzar sin saber: la confianza radical. No está "loco": está antes de la cordura y después de ella.',
+      reversed:'Imprudencia, inmadurez, huida, negarse a asumir responsabilidad. La espontaneidad se volvió evasión.' },
+    { num:'I', name:'El Mago', accent:'purple', ill:'mago', tags:['Inicio','Acción','Herramientas'],
+      essence:'El primer arcano numerado. Tiene sobre la mesa los cuatro palos —copa, oro, espada, basto—: todas las herramientas están ahí. Es el momento en que empezás a operar sobre la realidad.',
+      jung:'El Héroe que inicia su viaje. Pero también, señala Nichols, algo del tramposo: es "mago" en el sentido del que hace trucos. Trabaja con espejos y sombreros con doble fondo. Cuidado con la manipulación o el narcisismo creativo.',
+      jodo:'Manifestación activa. Tenés los materiales; ahora viene el gesto. Jodo insiste: el Mago todavía no sabe qué va a hacer con sus herramientas. Ese "no saber" es potencia, no falla. Es el instante antes del acto.',
+      reversed:'Indecisión, talento desperdiciado, manipulación, promesas vacías. Las herramientas están pero no se usan, o se usan para engañar.' },
+    { num:'II', name:'La Sacerdotisa', accent:'teal', ill:'sacerdotisa', tags:['Intuición','Silencio','Saber'],
+      essence:'También llamada La Papisa. Sentada entre dos columnas, con un libro cerrado sobre las rodillas. El saber interno, lo que se conoce sin demostrar.',
+      jung:'El arquetipo de la Virgen, dice Nichols: receptividad humilde hacia lo que todavía no se conoce. La contraparte femenina del Mago: donde él actúa hacia afuera, ella escucha hacia adentro. Es la introvertida pura, el inconsciente sabio.',
+      jodo:'Gestación interior. Todavía no hay salida al mundo; hay incubación. El libro está cerrado porque el saber aún no puede enunciarse. Jodo la asocia con la paciencia fértil, con la espera que germina.',
+      reversed:'Intuición bloqueada, secretos tóxicos, disociación del cuerpo, exceso de introversión. El saber se volvió encierro.' },
+    { num:'III', name:'La Emperatriz', accent:'pink', ill:'emperatriz', tags:['Abundancia','Creación','Madre'],
+      essence:'Figura femenina coronada, con cetro y escudo. Todo lo que germina, crece, se nutre y da frutos: proyectos, cuerpos, relaciones maternas, belleza creativa.',
+      jung:'Arquetipo de la Gran Madre en su cara nutricia y creativa. Nichols la empareja con el Emperador: ella es la fuerza generadora, él la que estructura. Cuando aparece, algo quiere nacer, o algo ya nacido pide cuidado.',
+      jodo:'Abundancia activa — no pasiva como la Papisa. La Emperatriz hace, crea, pare. Jodo subraya su sensualidad: es amante además de madre. Creatividad encarnada, belleza que se ofrece al mundo.',
+      reversed:'Dependencia emocional, madre posesiva, fertilidad bloqueada, creación estéril, lujo vacío.' },
+    { num:'IV', name:'El Emperador', accent:'gray', ill:null, tags:['Estructura','Autoridad','Padre'],
+      essence:'Figura masculina sentada en trono, de perfil. Estabilidad lograda, poder terrenal, límites claros, autoridad benevolente.',
+      jung:'Arquetipo del Padre. Nichols lo lee como el principio de orden que permite habitar el mundo: las reglas, las instituciones, la ley. En su cara positiva, firmeza protectora; en la negativa, autoritarismo rígido.',
+      jodo:'La estabilidad masculina. El que establece límites, funda, construye. Jodo lo asocia a lo paterno en sentido amplio: la estructura que sostiene pero que, si se endurece, ahoga.',
+      reversed:'Autoritarismo, rigidez, padre ausente o tiránico, control excesivo, miedo al cambio disfrazado de disciplina.' },
+    { num:'V', name:'El Papa', accent:'amber', ill:null, tags:['Maestro','Transmisión','Puente'],
+      essence:'Figura sacerdotal con dos acólitos a los pies. Puente entre lo alto y lo bajo, entre el cielo y la tierra. El que transmite una tradición.',
+      jung:'El Viejo Sabio, el maestro espiritual. Según Nichols, el conocimiento que llega del exterior como autoridad legítima. Puede ser un guía real o una voz interna que supo hablar por vos cuando te faltó claridad.',
+      jodo:'El maestro, el transmisor. Pero Jodo advierte: todo maestro puede volverse dogma. La palabra del Papa vale mientras abra caminos; cuando los cierra, se convierte en prisión religiosa o ideológica.',
+      reversed:'Dogmatismo, pseudo-gurús, tradición vacía, rebeldía inmadura, ruptura con la herencia sin haberla comprendido.' },
+    { num:'VI', name:'Los Enamorados', accent:'pink', ill:null, tags:['Elección','Vínculo','Encrucijada'],
+      essence:'Tres figuras humanas y una alada arriba (Eros/ángel). No es "el amor" romántico: es la carta de la elección. Hay que elegir, no se puede tener todo.',
+      jung:'Según Nichols, la primera gran prueba de conciencia: elegir compromete, renuncia a otras posibilidades. Arquetipo del Cruce de Caminos. También habla del encuentro con el Otro —ánima/animus— que nos constituye.',
+      jodo:'Jodo es enfático: no es amor, es elección. Hay que elegir, y elegir duele porque implica dejar algo. El verdadero vínculo amoroso surge de haber elegido libremente, no de haber caído pasivamente.',
+      reversed:'Indecisión crónica, vínculos tóxicos por no elegir, triangulaciones, amor codependiente.' },
+    { num:'VII', name:'El Carro', accent:'gray', ill:null, tags:['Victoria','Movimiento','Voluntad'],
+      essence:'Un joven príncipe guía dos caballos (uno claro y uno oscuro) desde un carro dorado. Movimiento, conquista, victoria del yo joven que sale al mundo.',
+      jung:'Nichols lo ve como el cierre triunfal de la primera fase de la individuación: el yo ya construyó identidad y ahora sale a operar. Pero la victoria es frágil: los dos caballos tiran en direcciones distintas, y el auriga aún no los domina del todo.',
+      jodo:'Victoria extravertida, conquista externa. Jodo señala la tensión de los dos caballos: uno solar, uno lunar. El Carro anda mientras el auriga mantenga el equilibrio entre esas fuerzas. Es el triunfo que puede desmoronarse si se vuelve arrogancia.',
+      reversed:'Fracaso, pérdida de control, arrogancia, viaje sin rumbo, fuerzas internas que tiran en direcciones opuestas.' },
+    { num:'VIII', name:'La Justicia', accent:'purple', ill:null, tags:['Equilibrio','Verdad','Balance'],
+      essence:'Figura femenina frontal con balanza y espada. Centro exacto, medida, ley kármica. Nada se pierde, nada sobra.',
+      jung:'Abre la segunda fase del viaje según Nichols: el descenso. Es el momento de pesarse a uno mismo. La espada corta las ilusiones; la balanza mide con precisión. No es juicio moral externo: es la verdad interna.',
+      jodo:'Equilibrio, justeza (no justicia moral). Jodo la lee como centro del mazo, punto de balance. Todo lo que se desvió vuelve al eje. Es honestidad radical: ver las cosas como son.',
+      reversed:'Injusticia, parcialidad, evasión de responsabilidades, moralismo rígido, balance perdido.' },
+    { num:'IX', name:'El Ermitaño', accent:'gray', ill:null, tags:['Retiro','Sabiduría','Linterna'],
+      essence:'Anciano con capucha y linterna, apoyado en un bastón. Se retira del mundo para mirar hacia adentro. No huye: busca.',
+      jung:'Otro rostro del Viejo Sabio, pero introvertido. Nichols lo ve como la figura que cada uno debe volverse en algún momento: la que ilumina el propio camino con su propia luz, sin depender de autoridad externa.',
+      jodo:'La linterna apunta siempre hacia adelante. El Ermitaño no se retira a la oscuridad: se retira para ver mejor. Jodo lo asocia con la madurez que viene de haber caminado mucho y haber aprendido a escucharse.',
+      reversed:'Aislamiento tóxico, misantropía, depresión, soledad que se volvió cárcel, huida del mundo.' },
+    { num:'X', name:'La Rueda de la Fortuna', accent:'amber', ill:null, tags:['Ciclo','Destino','Cambio'],
+      essence:'Rueda con tres figuras animales: una que sube, una en la cima, una que baja. Movimiento cíclico, destino, lo que no depende de vos.',
+      jung:'Para Nichols, el momento en que el yo descubre que no es el único actor: hay fuerzas mayores operando. El destino como proceso autónomo de la psique que empuja hacia el Sí-mismo.',
+      jodo:'Todo sube y todo baja. La clave: ningún estado es final. Jodo invita a aceptar el movimiento en vez de aferrarse. El que entiende la Rueda deja de sufrir por la caída y deja de endiosarse por la subida.',
+      reversed:'Rueda bloqueada, resistencia al cambio, sensación de estancamiento, mala racha vivida como definitiva.' },
+    { num:'XI', name:'La Fuerza', accent:'coral', ill:null, tags:['Dominio','Instinto','Amor'],
+      essence:'Mujer que abre (o cierra) las fauces de un león sin violencia. No es fuerza bruta: es dominio amoroso del instinto.',
+      jung:'Nichols destaca que es una mujer la que doma al león: no lo mata, lo integra. La Sombra animal no se elimina, se acepta y se pone a trabajar. Es el arquetipo del coraje interno, no del heroísmo militar.',
+      jodo:'Fuerza tranquila. Jodo insiste en que NO es represión: es amor que domestica. Poder interior que no necesita imponerse. La verdadera fuerza es la que no grita.',
+      reversed:'Represión de lo instintivo, fuerza vuelta violencia, impulsividad descontrolada, miedo a la propia potencia.' },
+    { num:'XII', name:'El Colgado', accent:'teal', ill:null, tags:['Pausa','Otro ángulo','Sacrificio'],
+      essence:'Hombre colgado por un pie, cabeza abajo, con los brazos atados. Tranquilo. Ve el mundo al revés.',
+      jung:'Para Nichols, un momento crucial del descenso: la suspensión fértil. El ego debe dejar de actuar para que algo más profundo emerja. No es castigo: es incubación, crisálida.',
+      jodo:'La pausa que transforma. Jodo lo compara con la crisálida: no se mueve, pero algo esencial ocurre dentro. Ver al revés permite percibir lo que desde el ángulo "normal" se pierde. Sacrificio en sentido sagrado: hacer sagrado.',
+      reversed:'Sacrificio inútil, victimismo, estancamiento voluntario, inmovilidad como coartada.' },
+    { num:'XIII', name:'La Muerte', accent:'gray', ill:'muerte', tags:['Fin','Transformación','Umbral'],
+      essence:'Arcano sin nombre en el Marsella tradicional. Esqueleto con guadaña que siega cabezas, manos, pies. Fin de un ciclo, corte radical, limpieza profunda.',
+      jung:'Según Nichols, la bisagra del viaje: el ego acepta su propia muerte simbólica para que el Sí-mismo pueda nacer. Casi nunca muerte literal. Es el momento más difícil y más necesario del descenso junguiano.',
+      jodo:'Limpieza, corte, fin liberador. Jodo es categórico: La Muerte no mata, ordena. Arranca lo seco para que crezca lo nuevo. Si duele, es porque te aferrás a lo que ya terminó.',
+      reversed:'Resistencia al cambio, duelo no elaborado, aferrarse a lo muerto, quedarse en el umbral sin cruzarlo.' },
+    { num:'XIV', name:'La Templanza', accent:'purple', ill:null, tags:['Circulación','Curación','Ángel'],
+      essence:'Ángel con dos vasijas que trasvasa un líquido entre ellas. Circulación entre opuestos, mezcla, fluidez, curación.',
+      jung:'Nichols la ve como la sanación que sigue a La Muerte. Dos mundos —el consciente y el inconsciente— aprenden a dialogar. El ángel es mediador, mensajero entre dimensiones.',
+      jodo:'Circulación pura. Algo que estaba estancado vuelve a fluir. Jodo subraya el gesto: el ángel trasvasa sin perder una gota. Es la medida exacta, la armonía alquímica.',
+      reversed:'Desequilibrio, excesos, impaciencia, mezclas erradas, cortocircuitos emocionales.' },
+    { num:'XV', name:'El Diablo', accent:'coral', ill:'diablo', tags:['Atadura','Sombra','Pasión'],
+      essence:'Figura cornuda sobre un pedestal, con dos figuras encadenadas a sus pies. Las cadenas están flojas: se podrían soltar si se quisiera.',
+      jung:'Nichols lo lee como la Sombra en su forma más densa: lo reprimido que ahora gobierna desde abajo. Adicciones, compulsiones, dependencias. Pero también contiene la "Sombra dorada": capacidades enterradas que piden ser vividas.',
+      jodo:'Atadura inconsciente. Lo que te posee sin que sepas. Jodo insiste: las cadenas están flojas. Lo que parece destino es elección repetida. También es pasión, deseo vital, lo que el mundo respetable rechaza — y que vos tenés que recuperar para vos.',
+      reversed:'Salida del pozo, toma de conciencia de la adicción, ruptura de un pacto con lo sombrío, liberación que empieza.' },
+    { num:'XVI', name:'La Torre', accent:'amber', ill:'torre', tags:['Ruptura','Liberación','Rayo'],
+      essence:'Torre alcanzada por un rayo. Dos figuras caen. Construcción falsa que se desmorona de un golpe.',
+      jung:'Según Nichols, el derrumbe necesario de la máscara (persona) falsa. Lo que vos creías que eras se cae, y asusta, pero era mentira. Lo que sobrevive al rayo es lo verdadero.',
+      jodo:'Ruptura violenta pero liberadora. Jodo la compara con una casa que se incendia y te obliga a salir: si te quedaras adentro morirías. Las estructuras mentales rígidas estallan. Dolor que salva.',
+      reversed:'Ruptura evitada, derrumbe lento disfrazado de estabilidad, negación del colapso que ya ocurrió.' },
+    { num:'XVII', name:'La Estrella', accent:'teal', ill:null, tags:['Esperanza','Confianza','Desnudez'],
+      essence:'Mujer desnuda vertiendo dos vasijas, una en tierra y otra en agua. Ocho estrellas arriba. Tras la Torre, la calma. La renovación.',
+      jung:'Para Nichols, el renacimiento que sigue al derrumbe. La desnudez es sinceridad: ya no hay máscara que defender. Las aguas del inconsciente vuelven a fluir limpias.',
+      jodo:'Confianza renovada. Se da y se recibe. Jodo señala el doble gesto: una vasija en la tierra (lo concreto, lo corporal) y una en el agua (lo emocional, lo inconsciente). Hay que nutrir los dos mundos.',
+      reversed:'Desesperanza, bloqueo emocional, miedo a mostrarse, desconexión con el inconsciente benévolo.' },
+    { num:'XVIII', name:'La Luna', accent:'gray', ill:null, tags:['Inconsciente','Sueños','Misterio'],
+      essence:'Luna entre dos torres, dos perros aullando, un cangrejo saliendo del agua. Territorio del inconsciente profundo, sueños, miedos irracionales.',
+      jung:'Nichols: el descenso a las aguas primordiales. La Luna muestra lo que el Sol oculta de día. Puede haber monstruos, pero también perlas. Es la noche del alma, la que pone en contacto con los fondos míticos.',
+      jodo:'Inconsciente puro, aguas nocturnas. Jodo advierte: no hay que temerle a la Luna, pero sí respetarla. Acá habitan los sueños y los miedos, y los dos dicen la verdad. Es el territorio del artista y del místico.',
+      reversed:'Ansiedad crónica, pesadillas, paranoia, confusión que se queda demasiado tiempo, incapacidad de distinguir lo real.' },
+    { num:'XIX', name:'El Sol', accent:'amber', ill:null, tags:['Claridad','Alegría','Fraternidad'],
+      essence:'Sol radiante sobre dos niños desnudos abrazados. Conciencia plena, alegría, fraternidad humana.',
+      jung:'Para Nichols, la conciencia iluminada después de la oscuridad lunar. Los dos niños: masculino y femenino integrados, sin conflicto. Plenitud solar.',
+      jodo:'Vitalidad fraterna. Jodo ama esta carta: es la alegría de estar vivos, la pareja humana reconciliada, la infancia recuperada sin inocencia fingida. El Sol calienta sin quemar.',
+      reversed:'Egocentrismo, exceso de luz que enceguece, optimismo superficial, brillo que tapa la sombra.' },
+    { num:'XX', name:'El Juicio', accent:'purple', ill:null, tags:['Renacimiento','Llamada','Despertar'],
+      essence:'Ángel con trompeta arriba; abajo, tres figuras salen de una tumba. Llamada a una vida nueva, renacimiento, segunda oportunidad.',
+      jung:'Nichols: la resurrección simbólica del individuo transformado. El yo muerto en La Muerte renace ahora con conciencia. Es una llamada vocacional — lo que viniste a hacer en esta vida se vuelve claro.',
+      jodo:'Llamada imperiosa. Algo te convoca y no podés ya seguir sordo. Jodo: es el momento en que tomás tu vida en serio. El despertar que ya no se desanda.',
+      reversed:'Llamada ignorada, miedo a renacer, culpa paralizante, voces internas juiciosas que no liberan.' },
+    { num:'XXI', name:'El Mundo', accent:'teal', ill:'mundo', tags:['Plenitud','Integración','Totalidad'],
+      essence:'Figura dentro de una mandorla, rodeada por cuatro símbolos (ángel, águila, león, toro). Fin del viaje: integración completa. El Loco llegó.',
+      jung:'El Sí-mismo realizado según Nichols. Los cuatro evangelistas (o los cuatro elementos/funciones psíquicas) rodean a la figura central: todo está presente, nada excluido. Culminación de la individuación.',
+      jodo:'Realización total, el ser danzante. Jodo subraya: no es un final muerto, es un final que baila. El Mundo contiene todo lo anterior y se abre otra vez al Loco. El viaje nunca termina, solo gira a un plano superior.',
+      reversed:'Proyecto inconcluso, cierre evitado, plenitud que se siente como trampa, miedo a terminar.' }
+  ];
+  const LIB_SUITS = [
+    { key:'copas', name:'Copas', element:'Agua', fn:'Sentir', accent:'pink',
+      essence:'El palo emocional. Todo lo que tiene que ver con vínculos, afectos, intuición, vida interior. Las relaciones amorosas, de familia, de amistad. También la vida espiritual y estética.',
+      jung:'La función Sentir (Jung). No es "emoción" en el sentido cotidiano, sino el modo racional de juzgar por preferencia: "esto me gusta, aquello no". Cuando dominan las Copas en una tirada, la vida afectiva está en el centro.',
+      jodo:'Para Jodo, el vaso receptivo. Las Copas reciben, contienen, acumulan. Agua: lo femenino receptivo en sentido arquetípico. Color asociado: azul.',
+      dominance:'Si en una tirada dominan las Copas, la pregunta se juega en el territorio del afecto: vínculos, amor, familia, estados emocionales. Si casi no aparecen Copas, puede haber sequedad afectiva, dificultad para sentir.' },
+    { key:'oros', name:'Oros', element:'Tierra', fn:'Sensación', accent:'amber',
+      essence:'Lo material y concreto. Dinero, trabajo, posesiones, cuerpo, salud física, tierra, casa. En algunos mazos se llaman Pentáculos o Denarios.',
+      jung:'La función Sensación (Jung). Captar lo que está aquí y ahora: la realidad corporal, palpable. Lo denso. En una tirada con muchos Oros, la pregunta se juega en el cuerpo o en las cosas.',
+      jodo:'Jodo los lee como lo concreto realizado. Si las Copas reciben, los Oros condensan: el dinero, el trabajo, el patrimonio. Color asociado: amarillo (conciencia que se hace piedra).',
+      dominance:'Dominancia de Oros: el tema está en lo material, en el cuerpo, en el trabajo, en las cosas tangibles. Ausencia de Oros puede indicar desconexión de lo concreto, vivir demasiado en la cabeza.' },
+    { key:'espadas', name:'Espadas', element:'Aire', fn:'Pensar', accent:'teal',
+      essence:'La mente y las ideas. Pensamientos, decisiones, conflictos, verdades que cortan, palabras. Suele ser el palo más desafiante: trae claridad, a veces dolorosa.',
+      jung:'La función Pensar (Jung). Análisis, lógica, criterios, discernimiento. Las Espadas separan lo verdadero de lo falso. Exceso de Espadas: sobreintelectualización, cabeza que no para.',
+      jodo:'Jodo las asocia al corte mental. El aire es lo sutil pero también lo afilado. Una espada puede defender o herir; una idea también. Color: azul mental, frío.',
+      dominance:'Dominancia de Espadas: la pregunta se juega en la mente, en las ideas, en las palabras, en los conflictos racionales. Ausencia de Espadas puede indicar falta de claridad, dificultad para poner orden.' },
+    { key:'bastos', name:'Bastos', element:'Fuego', fn:'Intuición', accent:'coral',
+      essence:'Energía y acción. Creatividad, pasión, proyectos, impulso vital, sexualidad creadora. Donde las Copas sienten, los Bastos hacen arder.',
+      jung:'La función Intuición (Jung). Captar posibilidades, presentir lo que puede ser. Los Bastos saltan hacia el futuro: visión, corazonada, chispa. Dominancia de Bastos: mucho fuego, mucha idea, riesgo de dispersión.',
+      jodo:'Jodo los vincula a lo fálico-creador. Fuego activo. El basto germina: es madera viva, puede florecer. Color asociado: rojo (vida corporal, impulso).',
+      dominance:'Dominancia de Bastos: la pregunta se juega en la acción, los proyectos, la pasión, la creatividad. Ausencia puede indicar apatía, falta de chispa, proyectos estancados.' }
+  ];
+
+  // ─── Generador programático de las 56 Menores ───
+  // Fórmula jodorowskiana: número (1-10 como etapa de proceso) × palo (emoción/material/mente/acción)
+  // Para figuras de corte: rol (Sota/Caballero/Reina/Rey) × palo
+  const NUM_ENERGIES = {
+    '1':  { name:'As', essence:'Semilla, potencial puro, impulso inicial. El don del palo en su forma más pura, sin desarrollar aún.',
+            jodo:'Para Jodo, el As es la gracia del palo concentrada: lo que recibís sin haberlo buscado. Todo lo que vendrá ya está acá, enrollado.' },
+    '2':  { name:'2', essence:'Dualidad, encuentro, acumulación. La energía del As se duplica: hay con qué, hay dos, hay espera.',
+            jodo:'Jodo ve el 2 como receptividad: se sostiene lo que se tiene, sin actuar aún. Es la paciencia fértil.' },
+    '3':  { name:'3', essence:'Primera manifestación creativa. Lo que estaba guardado sale al mundo, toma forma.',
+            jodo:'El 3 es la explosión creativa: de la pareja nace el hijo. Algo del palo se hace visible, se comparte.' },
+    '4':  { name:'4', essence:'Estructura, estabilidad, consolidación. Los cimientos están firmes. La casa construida.',
+            jodo:'Jodo lee el 4 como lo que se afirmó: hay estabilidad, pero también riesgo de quedarse quieto. Base sólida, aún no movida.' },
+    '5':  { name:'5', essence:'Crisis necesaria, tentación, ruptura del equilibrio. El 4 estable se sacude para seguir creciendo.',
+            jodo:'El 5 jodorowskiano es la crisis fértil: todo lo estabilizado se tambalea para que aparezca algo nuevo. No es fracaso; es empuje.' },
+    '6':  { name:'6', essence:'Belleza reencontrada, armonía, placer. Después de la crisis del 5, vuelve el equilibrio — más maduro.',
+            jodo:'Jodo: el 6 es la belleza. Lo que estaba roto en el 5 se vuelve a reunir, pero en un plano superior. Gozo.' },
+    '7':  { name:'7', essence:'Acción, movimiento, puesta en marcha. La energía sale al mundo con todo su poder.',
+            jodo:'El 7 es acción: lo reunido en el 6 ahora camina. Jodo lo asocia con el héroe que emprende la salida.' },
+    '8':  { name:'8', essence:'Perfección, equilibrio logrado, maestría operativa. Todo está en su lugar.',
+            jodo:'Para Jodo, el 8 es la perfección del palo: el domino técnico, la maestría. Cuidado con la rigidez.' },
+    '9':  { name:'9', essence:'Crisis luminosa, fin de ciclo, soledad fértil. La perfección del 8 se cuestiona para dar paso a algo mayor.',
+            jodo:'El 9 es la crisis del éxito. Jodo: todo lo logrado se pone en duda, y de esa duda nace la verdadera madurez.' },
+    '10': { name:'10', essence:'Cumbre y pasaje. Máxima expresión del palo; contiene el salto al ciclo siguiente.',
+            jodo:'Jodo ve el 10 como cumbre que abre el próximo ciclo. Es final y comienzo simultáneos. El palo se agota y se renueva.' }
+  };
+  const COURT_ROLES = {
+    'Sota':      { essence:'Aprendiz del palo. Principiante, mensajero, el que inicia el trayecto sin experiencia.',
+                   jodo:'Jodo: la Sota es el germen del palo, la primera aproximación inocente. Hay candor, pero también potencia virgen.' },
+    'Caballero': { essence:'Actor, el que sale al mundo con el palo en la mano. Movimiento, búsqueda, conquista.',
+                   jodo:'El Caballero es el que se lanza. Jodo lo asocia al aventurero, al buscador. Todavía no es maestro, pero ya no duda.' },
+    'Reina':     { essence:'Interioridad madura del palo. Conocimiento desde adentro, sabiduría encarnada, contención.',
+                   jodo:'La Reina sostiene el palo desde el ser. Jodo: es la maestría femenina, la que no necesita demostrar. Autoridad que viene de la profundidad.' },
+    'Rey':       { essence:'Realización externa del palo. Maestría pública, autoridad, poder consumado.',
+                   jodo:'El Rey es la cumbre manifiesta del palo. Jodo: el que domina su elemento y lo transmite al mundo. Poder maduro y responsable.' }
+  };
+  const SUIT_FLAVOR = {
+    'copas': { 
+      fn:'El territorio afectivo. Todo acá se juega en el vínculo, el sentir, el corazón.',
+      jungFn:'Función Sentir (Jung): juicio por preferencia afectiva.',
+      examples: {
+        '1':'Apertura emocional, don del amor recibido o por recibir.',
+        '2':'Encuentro afectivo, vínculo que se forma, reciprocidad incipiente.',
+        '3':'Celebración, amistad que florece, tres en armonía.',
+        '4':'Estabilidad afectiva que puede volverse aburrimiento o saturación.',
+        '5':'Crisis emocional, pérdida, duelo que remueve.',
+        '6':'Nostalgia dulce, reencuentro, belleza sentida.',
+        '7':'Muchas opciones afectivas, tentación, ensueños que compiten.',
+        '8':'Plenitud emocional lograda; riesgo: apegarse de más.',
+        '9':'Satisfacción afectiva cuestionada, soledad en la abundancia.',
+        '10':'Familia plena, hogar afectivo realizado, cierre amoroso.'
+      },
+      court: {
+        'Sota':'Primer amor, noticia afectiva, corazón inocente.',
+        'Caballero':'El que cruza el mundo por amor, el romántico activo.',
+        'Reina':'Madre afectiva, amiga profunda, la que escucha sin juzgar.',
+        'Rey':'Patriarca amoroso, autoridad del corazón, padre emocional maduro.'
+      }
+    },
+    'oros': {
+      fn:'El territorio material. Todo acá se juega en el cuerpo, el dinero, lo tangible.',
+      jungFn:'Función Sensación (Jung): percepción de lo concreto, aquí y ahora.',
+      examples: {
+        '1':'Oportunidad material, semilla de prosperidad, salud naciente.',
+        '2':'Balance económico, dos cosas que hay que equilibrar, malabares.',
+        '3':'Primer fruto del trabajo, oficio que empieza a rendir.',
+        '4':'Seguridad material; riesgo: avaricia, aferrarse a lo que se tiene.',
+        '5':'Crisis económica, escasez, pérdida material o corporal.',
+        '6':'Generosidad, intercambio justo, compartir la abundancia.',
+        '7':'Esfuerzo sostenido, esperar el fruto, paciencia laboral.',
+        '8':'Maestría artesanal, trabajo bien hecho, oficio consumado.',
+        '9':'Abundancia solitaria, riqueza lograda que busca sentido.',
+        '10':'Patrimonio familiar, legado material, riqueza que se hereda.'
+      },
+      court: {
+        'Sota':'Aprendiz, primer trabajo, estudiante comprometido.',
+        'Caballero':'Emprendedor, trabajador perseverante, el que avanza despacio.',
+        'Reina':'Administradora sabia, mujer de negocios conectada al cuerpo.',
+        'Rey':'Patriarca material, empresario maduro, hombre de patrimonio.'
+      }
+    },
+    'espadas': {
+      fn:'El territorio mental. Todo acá se juega en la cabeza, las palabras, los conflictos.',
+      jungFn:'Función Pensar (Jung): análisis, lógica, discernimiento.',
+      examples: {
+        '1':'Idea clara, claridad mental recibida, verdad que se revela.',
+        '2':'Decisión pendiente, dos pensamientos que chocan, indecisión.',
+        '3':'Dolor mental, herida emocional que atraviesa la razón.',
+        '4':'Reposo mental, tregua, tiempo para pensar en calma.',
+        '5':'Conflicto abierto, discusión, derrota o victoria amarga.',
+        '6':'Travesía, dejar atrás lo pensado, cambiar de perspectiva.',
+        '7':'Estrategia astuta, engaño sutil, maniobra mental.',
+        '8':'Parálisis mental, creerse atado por ideas propias.',
+        '9':'Angustia, pensamientos nocturnos, rumiación que no cesa.',
+        '10':'Final mental, pensamiento agotado, derrota que libera.'
+      },
+      court: {
+        'Sota':'Curioso, estudiante, espía, el que observa y aprende.',
+        'Caballero':'El que lucha por una idea, activista, cruzado.',
+        'Reina':'Inteligencia serena, mujer lúcida, lectora del mundo.',
+        'Rey':'Juez, maestro, autoridad intelectual, hombre de leyes.'
+      }
+    },
+    'bastos': {
+      fn:'El territorio del fuego. Todo acá se juega en la acción, la pasión, la chispa.',
+      jungFn:'Función Intuición (Jung): captar lo posible, corazonada.',
+      examples: {
+        '1':'Inspiración, chispa creativa, proyecto que nace.',
+        '2':'Planificación, dos caminos posibles, elección creativa.',
+        '3':'Primeros resultados, la idea empieza a andar.',
+        '4':'Celebración, fiesta, estabilidad gozosa del proyecto.',
+        '5':'Competencia, conflicto creativo, fricción productiva.',
+        '6':'Victoria, reconocimiento público, triunfo del esfuerzo.',
+        '7':'Defender lo logrado, sostener el territorio, coraje.',
+        '8':'Movimiento veloz, mensajes en camino, todo se acelera.',
+        '9':'Última batalla, cansancio del guerrero, resistir un poco más.',
+        '10':'Carga pesada, éxito que cansa, responsabilidad del logro.'
+      },
+      court: {
+        'Sota':'Chispa inicial, entusiasmo novel, explorador.',
+        'Caballero':'Aventurero, el que se lanza sin mirar, pasión en movimiento.',
+        'Reina':'Fuego interior sostenido, mujer apasionada y magnética.',
+        'Rey':'Creador consumado, líder carismático, autoridad apasionada.'
+      }
+    }
+  };
+
+  function buildMinors() {
+    const out = [];
+    LIB_SUITS.forEach(suit => {
+      const flavor = SUIT_FLAVOR[suit.key];
+      // Numbered cards 1-10
+      for (let n = 1; n <= 10; n++) {
+        const num = String(n);
+        const energy = NUM_ENERGIES[num];
+        const flavorNote = flavor.examples[num];
+        out.push({
+          type: 'minor', suit: suit.key, suitName: suit.name, accent: suit.accent, rank: energy.name,
+          name: `${energy.name} de ${suit.name}`,
+          tags: [suit.fn, 'Número ' + num],
+          essence: `${energy.essence} Aplicado al palo: ${flavorNote}`,
+          jung: `${flavor.jungFn} Esta carta toca el territorio ${suit.fn.toLowerCase()} en la etapa ${num} de su ciclo.`,
+          jodo: energy.jodo,
+          reversed: `Energía ${num} bloqueada o en germen en el territorio ${suit.fn.toLowerCase()}.`
+        });
+      }
+      // Court cards
+      ['Sota','Caballero','Reina','Rey'].forEach(role => {
+        const r = COURT_ROLES[role];
+        const flavorNote = flavor.court[role];
+        out.push({
+          type: 'minor', suit: suit.key, suitName: suit.name, accent: suit.accent, rank: role,
+          name: `${role} de ${suit.name}`,
+          tags: [suit.fn, 'Corte'],
+          essence: `${r.essence} Aplicado al palo: ${flavorNote}`,
+          jung: `${flavor.jungFn} Esta carta encarna una forma de habitar la función ${suit.fn.toLowerCase()}.`,
+          jodo: r.jodo,
+          reversed: `Aspecto distorsionado o inmaduro del rol en el territorio ${suit.fn.toLowerCase()}.`
+        });
+      });
+    });
+    return out;
+  }
+  const LIB_MINORS = buildMinors();
   const ILL = {
     loco: `<circle cx="-4" cy="-28" r="4"/><path d="M-4 -24 L-4 -10 M-4 -10 L-11 7 M-4 -10 L5 6 M-4 -20 L11 -26 M-4 -20 L-10 -14"/><path d="M11 -26 L20 -32"/><path d="M18 -33 Q25 -33 25 -29 Q25 -25 21 -25 L18 -25 Q14 -25 14 -29 Q14 -33 18 -33 Z" fill="currentColor"/><ellipse cx="-14" cy="13" rx="4" ry="2"/><path d="M-17 13 L-17 17 M-11 13 L-11 17"/><circle cx="18" cy="-38" r="1.5" fill="currentColor"/>`,
     mago: `<circle cx="-5" cy="-32" r="2.5"/><circle cx="5" cy="-32" r="2.5"/><circle cx="0" cy="-20" r="3.5"/><path d="M0 -16 L0 6 M0 -10 L-11 -22 M0 -10 L10 -4 M0 6 L-5 18 M0 6 L5 18"/><path d="M-16 22 L16 22" stroke-width="1"/><path d="M-11 16 L-11 22" stroke-width="1.5"/><circle cx="-4" cy="19" r="1.8" fill="currentColor"/><path d="M3 16 L3 22" stroke-width="1.5"/><path d="M9 18 Q9 22 11 22 Q13 22 13 18 Q13 15 11 15 Q9 15 9 18 Z"/>`,
@@ -307,20 +586,35 @@
   function card(num, name, accent, ill) {
     const P = {purple:['#EEEDFE','#7F77DD','#26215C','#534AB7'],amber:['#FAEEDA','#EF9F27','#633806','#854F0B'],teal:['#E1F5EE','#1D9E75','#04342C','#0F6E56'],coral:['#FAECE7','#D85A30','#4A1B0C','#993C1D'],pink:['#FBEAF0','#D4537E','#4B1528','#993556'],gray:['#F1EFE8','#888780','#2C2C2A','#5F5E5A']};
     const c = P[accent] || P.purple;
-    const ilsvg = ill && ILL[ill] ? ILL[ill] : '';
+    const ilsvg = ill && ILL[ill] ? ILL[ill] : `<text x="0" y="10" text-anchor="middle" font-size="28" fill="${c[3]}" font-family="var(--font-serif), serif" font-weight="500">${num}</text>`;
     return `<svg width="100" height="150" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="96" height="146" rx="7" fill="${c[0]}" stroke="${c[1]}" stroke-width="1.2"/><rect x="6" y="6" width="88" height="138" rx="4" fill="none" stroke="${c[1]}" stroke-width="0.5" opacity="0.5"/><text x="50" y="22" text-anchor="middle" font-size="11" fill="${c[2]}" font-family="var(--font-serif), serif" font-weight="500">${num}</text><g transform="translate(50, 78)" color="${c[3]}" stroke="currentColor" fill="none" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${ilsvg}</g><text x="50" y="134" text-anchor="middle" font-size="7.5" fill="${c[3]}" letter-spacing="0.3">${name}</text></svg>`;
   }
+
+  function minorCardSvg(c) {
+    const P = {pink:['#FBEAF0','#D4537E','#4B1528','#993556'],amber:['#FAEEDA','#EF9F27','#633806','#854F0B'],teal:['#E1F5EE','#1D9E75','#04342C','#0F6E56'],coral:['#FAECE7','#D85A30','#4A1B0C','#993C1D']};
+    const col = P[c.accent] || P.pink;
+    const SYM = {
+      copas: `<path d="M-14 -16 Q-14 2 0 6 Q14 2 14 -16 Z" fill="${col[0]}" stroke="${col[3]}" stroke-width="1.3"/><ellipse cx="0" cy="-16" rx="14" ry="3" fill="${col[0]}" stroke="${col[3]}" stroke-width="1.3"/><rect x="-3" y="6" width="6" height="8" fill="${col[0]}" stroke="${col[3]}" stroke-width="1"/><ellipse cx="0" cy="15" rx="10" ry="2" fill="${col[0]}" stroke="${col[3]}" stroke-width="1.3"/>`,
+      oros: `<circle cx="0" cy="0" r="18" fill="${col[0]}" stroke="${col[1]}" stroke-width="1.3"/><path d="M0 -12 L7 7 L-9 -4 L9 -4 L-7 7 Z" fill="none" stroke="${col[3]}" stroke-width="1.2"/><circle cx="0" cy="0" r="1.3" fill="${col[3]}"/>`,
+      espadas: `<path d="M-2 -18 L2 -18 L2 8 L0 12 L-2 8 Z" fill="${col[0]}" stroke="${col[3]}" stroke-width="1.2"/><path d="M-8 8 L8 8 L6 12 L-6 12 Z" fill="${col[1]}" stroke="${col[3]}" stroke-width="1"/><rect x="-2" y="12" width="4" height="6" fill="${col[3]}"/><circle cx="0" cy="19" r="2.2" fill="${col[0]}" stroke="${col[3]}" stroke-width="1"/>`,
+      bastos: `<line x1="-12" y1="15" x2="12" y2="-15" stroke="${col[1]}" stroke-width="4" stroke-linecap="round"/><path d="M12 -15 Q7 -20 3 -17 Q7 -13 12 -14" fill="${col[1]}" stroke="${col[3]}" stroke-width="0.8"/><circle cx="-12" cy="15" r="2.3" fill="${col[3]}"/>`
+    };
+    const isCourt = ['Sota','Caballero','Reina','Rey'].indexOf(c.rank) >= 0;
+    const crown = isCourt ? `<path d="M-10 -30 L-6 -34 L-2 -30 L0 -36 L2 -30 L6 -34 L10 -30 L10 -26 L-10 -26 Z" fill="${col[0]}" stroke="${col[3]}" stroke-width="1"/>` : '';
+    return `<svg width="100" height="150" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="96" height="146" rx="7" fill="${col[0]}" stroke="${col[1]}" stroke-width="1.2"/><rect x="6" y="6" width="88" height="138" rx="4" fill="none" stroke="${col[1]}" stroke-width="0.5" opacity="0.5"/><text x="50" y="22" text-anchor="middle" font-size="11" fill="${col[2]}" font-family="var(--font-serif), serif" font-weight="500">${c.rank}</text><g transform="translate(50, 78)">${crown}${SYM[c.suit]}</g><text x="50" y="134" text-anchor="middle" font-size="7.5" fill="${col[3]}" letter-spacing="0.3">${c.suitName}</text></svg>`;
+  }
+
   function split() { return `<svg width="180" height="130" viewBox="0 0 180 130" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="10" width="70" height="110" rx="6" fill="#EEEDFE" stroke="#7F77DD" stroke-width="1"/><rect x="100" y="10" width="70" height="110" rx="6" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1"/><text x="45" y="60" text-anchor="middle" font-size="24" fill="#26215C" font-weight="500">22</text><text x="45" y="82" text-anchor="middle" font-size="10" fill="#534AB7">Mayores</text><text x="135" y="60" text-anchor="middle" font-size="24" fill="#633806" font-weight="500">56</text><text x="135" y="82" text-anchor="middle" font-size="10" fill="#854F0B">Menores</text></svg>`; }
-  function minors() { const items = [['#FBEAF0','#D4537E','Copas'],['#FAEEDA','#EF9F27','Oros'],['#E6F1FB','#378ADD','Espadas'],['#FAECE7','#D85A30','Bastos']]; return `<svg width="220" height="120" viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">${items.map((it, i) => `<rect x="${10 + i*52}" y="15" width="42" height="90" rx="4" fill="${it[0]}" stroke="${it[1]}" stroke-width="1"/><text x="${31 + i*52}" y="95" text-anchor="middle" font-size="8" fill="${it[1]}">${it[2]}</text>`).join('')}</svg>`; }
+  function minors() { const items = [['#FBEAF0','#D4537E','Copas'],['#FAEEDA','#EF9F27','Oros'],['#E1F5EE','#1D9E75','Espadas'],['#FAECE7','#D85A30','Bastos']]; return `<svg width="220" height="120" viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg">${items.map((it, i) => `<rect x="${10 + i*52}" y="15" width="42" height="90" rx="4" fill="${it[0]}" stroke="${it[1]}" stroke-width="1"/><text x="${31 + i*52}" y="95" text-anchor="middle" font-size="8" fill="${it[1]}">${it[2]}</text>`).join('')}</svg>`; }
   function cup() { return `<svg width="110" height="140" viewBox="0 0 110 140" xmlns="http://www.w3.org/2000/svg"><ellipse cx="55" cy="22" rx="28" ry="5" fill="#FBEAF0" stroke="#D4537E" stroke-width="1.5"/><path d="M28 24 Q28 62 55 68 Q82 62 82 24" fill="#FBEAF0" stroke="#D4537E" stroke-width="1.5"/><line x1="32" y1="40" x2="78" y2="40" stroke="#D4537E" stroke-width="0.8" opacity="0.5"/><path d="M55 34 Q47 48 47 55 Q47 61 55 61 Q63 61 63 55 Q63 48 55 34 Z" fill="#D4537E"/><rect x="51" y="68" width="8" height="12" fill="#FBEAF0" stroke="#D4537E" stroke-width="1.3"/><ellipse cx="55" cy="84" rx="8" ry="3.5" fill="#FBEAF0" stroke="#D4537E" stroke-width="1.3"/><rect x="51" y="87" width="8" height="14" fill="#FBEAF0" stroke="#D4537E" stroke-width="1.3"/><path d="M42 101 L68 101 L72 114 L38 114 Z" fill="#FBEAF0" stroke="#D4537E" stroke-width="1.3"/><ellipse cx="55" cy="116" rx="22" ry="4" fill="#FBEAF0" stroke="#D4537E" stroke-width="1.5"/></svg>`; }
   function coin() { return `<svg width="110" height="140" viewBox="0 0 110 140" xmlns="http://www.w3.org/2000/svg"><circle cx="55" cy="70" r="46" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1.8"/><circle cx="55" cy="70" r="39" fill="none" stroke="#EF9F27" stroke-width="0.9" opacity="0.6"/><path d="M55 40 L72 92 L26 60 L84 60 L38 92 Z" fill="none" stroke="#854F0B" stroke-width="1.8" stroke-linejoin="round"/><circle cx="55" cy="70" r="2.5" fill="#854F0B"/><circle cx="55" cy="30" r="1.5" fill="#854F0B"/><circle cx="55" cy="110" r="1.5" fill="#854F0B"/><circle cx="19" cy="70" r="1.5" fill="#854F0B"/><circle cx="91" cy="70" r="1.5" fill="#854F0B"/></svg>`; }
-  function sword() { return `<svg width="110" height="140" viewBox="0 0 110 140" xmlns="http://www.w3.org/2000/svg"><path d="M48 14 L52 8 L55 14 L58 8 L62 14 L62 20 L48 20 Z" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.3"/><circle cx="55" cy="12" r="1.5" fill="#185FA5"/><path d="M50 22 L60 22 L60 95 L55 102 L50 95 Z" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/><line x1="55" y1="24" x2="55" y2="95" stroke="#185FA5" stroke-width="0.7" opacity="0.5"/><path d="M32 95 L78 95 L75 102 L35 102 Z" fill="#378ADD" stroke="#185FA5" stroke-width="1.3"/><path d="M32 95 Q26 92 28 85" fill="none" stroke="#185FA5" stroke-width="1.3"/><path d="M78 95 Q84 92 82 85" fill="none" stroke="#185FA5" stroke-width="1.3"/><rect x="51" y="102" width="8" height="20" fill="#185FA5"/><line x1="51" y1="107" x2="59" y2="107" stroke="#E6F1FB" stroke-width="0.6"/><line x1="51" y1="112" x2="59" y2="112" stroke="#E6F1FB" stroke-width="0.6"/><line x1="51" y1="117" x2="59" y2="117" stroke="#E6F1FB" stroke-width="0.6"/><circle cx="55" cy="128" r="6" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.3"/><circle cx="55" cy="128" r="2" fill="#185FA5"/></svg>`; }
+  function sword() { return `<svg width="110" height="140" viewBox="0 0 110 140" xmlns="http://www.w3.org/2000/svg"><path d="M48 14 L52 8 L55 14 L58 8 L62 14 L62 20 L48 20 Z" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.3"/><circle cx="55" cy="12" r="1.5" fill="#0F6E56"/><path d="M50 22 L60 22 L60 95 L55 102 L50 95 Z" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"/><line x1="55" y1="24" x2="55" y2="95" stroke="#0F6E56" stroke-width="0.7" opacity="0.5"/><path d="M32 95 L78 95 L75 102 L35 102 Z" fill="#1D9E75" stroke="#0F6E56" stroke-width="1.3"/><path d="M32 95 Q26 92 28 85" fill="none" stroke="#0F6E56" stroke-width="1.3"/><path d="M78 95 Q84 92 82 85" fill="none" stroke="#0F6E56" stroke-width="1.3"/><rect x="51" y="102" width="8" height="20" fill="#0F6E56"/><line x1="51" y1="107" x2="59" y2="107" stroke="#E1F5EE" stroke-width="0.6"/><line x1="51" y1="112" x2="59" y2="112" stroke="#E1F5EE" stroke-width="0.6"/><line x1="51" y1="117" x2="59" y2="117" stroke="#E1F5EE" stroke-width="0.6"/><circle cx="55" cy="128" r="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.3"/><circle cx="55" cy="128" r="2" fill="#0F6E56"/></svg>`; }
   function wand() { return `<svg width="110" height="140" viewBox="0 0 110 140" xmlns="http://www.w3.org/2000/svg"><line x1="25" y1="125" x2="85" y2="22" stroke="#D85A30" stroke-width="6" stroke-linecap="round"/><line x1="25" y1="125" x2="85" y2="22" stroke="#993C1D" stroke-width="1" stroke-linecap="round" stroke-dasharray="2,8" opacity="0.6"/><circle cx="47" cy="85" r="3" fill="#993C1D"/><circle cx="47" cy="85" r="1.3" fill="#712B13"/><circle cx="65" cy="55" r="2.5" fill="#993C1D"/><path d="M85 22 Q75 10 68 14 Q72 22 82 22" fill="#639922" stroke="#3B6D11" stroke-width="1.1"/><path d="M85 22 Q94 8 102 16 Q96 22 88 20" fill="#639922" stroke="#3B6D11" stroke-width="1.1"/><path d="M80 22 L80 28 Q80 32 84 32" fill="none" stroke="#3B6D11" stroke-width="0.8"/><path d="M62 60 Q52 56 48 62 Q56 64 62 64 Z" fill="#639922" stroke="#3B6D11" stroke-width="1"/><path d="M54 62 Q50 66 52 70" fill="none" stroke="#3B6D11" stroke-width="0.7"/><circle cx="25" cy="125" r="6" fill="#993C1D" stroke="#712B13" stroke-width="1.3"/><circle cx="25" cy="125" r="2" fill="#712B13"/></svg>`; }
   function spread() { return `<svg width="240" height="140" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="20" width="60" height="100" rx="5" fill="#EEEDFE" stroke="#7F77DD" stroke-width="1"/><text x="45" y="75" text-anchor="middle" font-size="10" fill="#534AB7">Pasado</text><rect x="90" y="20" width="60" height="100" rx="5" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1"/><text x="120" y="75" text-anchor="middle" font-size="10" fill="#854F0B">Presente</text><rect x="165" y="20" width="60" height="100" rx="5" fill="#E1F5EE" stroke="#1D9E75" stroke-width="1"/><text x="195" y="75" text-anchor="middle" font-size="10" fill="#0F6E56">Futuro</text></svg>`; }
   function spreadPos(idx) { const labels = ['Pasado','Presente','Futuro']; const fills = [['#EEEDFE','#7F77DD','#534AB7'],['#FAEEDA','#EF9F27','#854F0B'],['#E1F5EE','#1D9E75','#0F6E56']]; return `<svg width="240" height="140" viewBox="0 0 240 140" xmlns="http://www.w3.org/2000/svg">${[0,1,2].map(i => { const active = i === idx; const f = active ? fills[i] : ['#F1EFE8','#B4B2A9','#888780']; return `<rect x="${15 + i*75}" y="${active ? 15 : 22}" width="60" height="${active ? 110 : 96}" rx="5" fill="${f[0]}" stroke="${f[1]}" stroke-width="${active ? 1.5 : 0.8}" opacity="${active ? 1 : 0.55}"/><text x="${45 + i*75}" y="75" text-anchor="middle" font-size="${active ? 11 : 9}" fill="${f[2]}" font-weight="${active ? 500 : 400}">${labels[i]}</text>`;}).join('')}</svg>`; }
   function archetypes() { return `<svg width="200" height="160" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="80" r="60" fill="none" stroke="#7F77DD" stroke-width="0.7" stroke-dasharray="2,3" opacity="0.6"/><rect x="91" y="15" width="18" height="26" rx="2" fill="#EEEDFE" stroke="#7F77DD" stroke-width="0.8"/><rect x="152" y="68" width="18" height="26" rx="2" fill="#FBEAF0" stroke="#D4537E" stroke-width="0.8"/><rect x="91" y="120" width="18" height="26" rx="2" fill="#FAEEDA" stroke="#EF9F27" stroke-width="0.8"/><rect x="30" y="68" width="18" height="26" rx="2" fill="#E1F5EE" stroke="#1D9E75" stroke-width="0.8"/><circle cx="100" cy="81" r="16" fill="#534AB7"/><text x="100" y="85" text-anchor="middle" font-size="10" fill="white" font-weight="500">Self</text></svg>`; }
   function individuation() { return `<svg width="280" height="120" viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="25" width="60" height="70" rx="5" fill="#EEEDFE" stroke="#7F77DD" stroke-width="1"/><text x="40" y="55" text-anchor="middle" font-size="11" fill="#26215C" font-weight="500">I–VII</text><text x="40" y="110" text-anchor="middle" font-size="9" fill="#534AB7">Yo social</text><rect x="110" y="25" width="60" height="70" rx="5" fill="#F1EFE8" stroke="#888780" stroke-width="1"/><text x="140" y="55" text-anchor="middle" font-size="10" fill="#2C2C2A" font-weight="500">VIII–XIV</text><text x="140" y="110" text-anchor="middle" font-size="9" fill="#5F5E5A">Descenso</text><rect x="210" y="25" width="60" height="70" rx="5" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1"/><text x="240" y="55" text-anchor="middle" font-size="10" fill="#633806" font-weight="500">XV–XXI</text><text x="240" y="110" text-anchor="middle" font-size="9" fill="#854F0B">Integración</text><line x1="72" y1="60" x2="106" y2="60" stroke="#888780" stroke-width="1"/><polygon points="108,60 104,57 104,63" fill="#888780"/><line x1="172" y1="60" x2="206" y2="60" stroke="#888780" stroke-width="1"/><polygon points="208,60 204,57 204,63" fill="#888780"/></svg>`; }
-  function functions() { return `<svg width="240" height="200" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg"><circle cx="120" cy="100" r="70" fill="none" stroke="#888780" stroke-width="0.5" opacity="0.3"/><g transform="translate(120,40)"><line x1="0" y1="-15" x2="0" y2="15" stroke="#378ADD" stroke-width="2.5"/><polygon points="0,-18 -4,-12 4,-12" fill="#378ADD"/><line x1="-8" y1="10" x2="8" y2="10" stroke="#378ADD" stroke-width="2"/></g><text x="120" y="22" text-anchor="middle" font-size="11" fill="#185FA5" font-weight="500">Pensar</text><text x="120" y="35" text-anchor="middle" font-size="9" fill="#378ADD">Espadas</text><circle cx="190" cy="100" r="14" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1.3"/><polygon points="190,92 192,98 198,98 193,102 195,108 190,104 185,108 187,102 182,98 188,98" fill="none" stroke="#854F0B" stroke-width="0.8"/><text x="215" y="98" text-anchor="start" font-size="11" fill="#854F0B" font-weight="500">Sensación</text><text x="215" y="110" text-anchor="start" font-size="9" fill="#EF9F27">Oros</text><path d="M112 155 Q112 172 120 172 Q128 172 128 155 Z" fill="#FBEAF0" stroke="#D4537E" stroke-width="1.3"/><line x1="120" y1="172" x2="120" y2="180" stroke="#D4537E" stroke-width="1.3"/><text x="120" y="195" text-anchor="middle" font-size="11" fill="#993556" font-weight="500">Sentir · Copas</text><line x1="38" y1="108" x2="62" y2="92" stroke="#D85A30" stroke-width="2.5"/><circle cx="62" cy="92" r="5" fill="#D85A30"/><text x="25" y="98" text-anchor="end" font-size="11" fill="#993C1D" font-weight="500">Intuición</text><text x="25" y="110" text-anchor="end" font-size="9" fill="#D85A30">Bastos</text></svg>`; }
+  function funcs() { return `<svg width="240" height="200" viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg"><circle cx="120" cy="100" r="70" fill="none" stroke="#888780" stroke-width="0.5" opacity="0.3"/><g transform="translate(120,40)"><line x1="0" y1="-15" x2="0" y2="15" stroke="#1D9E75" stroke-width="2.5"/><polygon points="0,-18 -4,-12 4,-12" fill="#1D9E75"/><line x1="-8" y1="10" x2="8" y2="10" stroke="#1D9E75" stroke-width="2"/></g><text x="120" y="22" text-anchor="middle" font-size="11" fill="#0F6E56" font-weight="500">Pensar</text><text x="120" y="35" text-anchor="middle" font-size="9" fill="#1D9E75">Espadas</text><circle cx="190" cy="100" r="14" fill="#FAEEDA" stroke="#EF9F27" stroke-width="1.3"/><polygon points="190,92 192,98 198,98 193,102 195,108 190,104 185,108 187,102 182,98 188,98" fill="none" stroke="#854F0B" stroke-width="0.8"/><text x="215" y="98" text-anchor="start" font-size="11" fill="#854F0B" font-weight="500">Sensación</text><text x="215" y="110" text-anchor="start" font-size="9" fill="#EF9F27">Oros</text><path d="M112 155 Q112 172 120 172 Q128 172 128 155 Z" fill="#FBEAF0" stroke="#D4537E" stroke-width="1.3"/><line x1="120" y1="172" x2="120" y2="180" stroke="#D4537E" stroke-width="1.3"/><text x="120" y="195" text-anchor="middle" font-size="11" fill="#993556" font-weight="500">Sentir · Copas</text><line x1="38" y1="108" x2="62" y2="92" stroke="#D85A30" stroke-width="2.5"/><circle cx="62" cy="92" r="5" fill="#D85A30"/><text x="25" y="98" text-anchor="end" font-size="11" fill="#993C1D" font-weight="500">Intuición</text><text x="25" y="110" text-anchor="end" font-size="9" fill="#D85A30">Bastos</text></svg>`; }
   function shadow() { return `<svg width="110" height="140" viewBox="0 0 110 140" xmlns="http://www.w3.org/2000/svg"><path d="M5 13 Q5 5 13 5 L55 5 L55 135 L13 135 Q5 135 5 127 Z" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="1"/><path d="M55 5 L97 5 Q105 5 105 13 L105 127 Q105 135 97 135 L55 135 Z" fill="#2C2C2A" stroke="#5F5E5A" stroke-width="1"/><circle cx="30" cy="55" r="9" fill="none" stroke="#5F5E5A" stroke-width="1"/><text x="30" y="95" text-anchor="middle" font-size="10" fill="#5F5E5A">persona</text><circle cx="80" cy="55" r="9" fill="none" stroke="#B4B2A9" stroke-width="1"/><text x="80" y="95" text-anchor="middle" font-size="10" fill="#B4B2A9">sombra</text></svg>`; }
   function marsella() { return `<svg width="100" height="140" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="90" height="130" rx="4" fill="#FAEEDA" stroke="#2C2C2A" stroke-width="1.5"/><text x="50" y="22" text-anchor="middle" font-size="11" fill="#2C2C2A">V</text><circle cx="50" cy="50" r="10" fill="#F0997B" stroke="#2C2C2A" stroke-width="0.8"/><path d="M40 44 L60 44 L62 38 L38 38 Z" fill="#378ADD" stroke="#2C2C2A" stroke-width="0.8"/><path d="M35 62 L65 62 L69 100 L31 100 Z" fill="#E24B4A" stroke="#2C2C2A" stroke-width="0.8"/><rect x="46" y="68" width="8" height="22" fill="#EF9F27"/><rect x="36" y="102" width="28" height="18" fill="#378ADD" stroke="#2C2C2A" stroke-width="0.5"/><text x="50" y="131" text-anchor="middle" font-size="6" fill="#2C2C2A">Le Pape</text></svg>`; }
   function mandala() { return `<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg"><circle cx="90" cy="90" r="75" fill="none" stroke="#7F77DD" stroke-width="0.6" opacity="0.5"/><circle cx="90" cy="90" r="55" fill="none" stroke="#7F77DD" stroke-width="0.6" opacity="0.6"/><circle cx="90" cy="90" r="35" fill="none" stroke="#7F77DD" stroke-width="0.6" opacity="0.7"/><circle cx="90" cy="90" r="12" fill="#EEEDFE" stroke="#7F77DD" stroke-width="1"/>${[0,45,90,135,180,225,270,315].map(deg => { const rad = deg * Math.PI / 180; const x = 90 + Math.cos(rad) * 55; const y = 90 + Math.sin(rad) * 55; return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="#7F77DD"/>`; }).join('')}</svg>`; }
@@ -339,7 +633,7 @@
       c0:()=>card('0','El Loco','amber','loco'),c1:()=>card('I','El Mago','purple','mago'),c2:()=>card('II','La Sacerdotisa','teal','sacerdotisa'),c3:()=>card('III','La Emperatriz','pink','emperatriz'),
       c13:()=>card('XIII','La Muerte','gray','muerte'),c15:()=>card('XV','El Diablo','coral','diablo'),c16:()=>card('XVI','La Torre','amber','torre'),c21:()=>card('XXI','El Mundo','teal','mundo'),
       spread,pos1:()=>spreadPos(0),pos2:()=>spreadPos(1),pos3:()=>spreadPos(2),
-      archetypes,individuation,functions,shadow,marsella,mandala,camoin,colors,
+      archetypes,individuation,functions:funcs,shadow,marsella,mandala,camoin,colors,
       color_yellow:()=>colorPair('yellow','red'),color_blue:()=>colorPair('blue','green'),color_bwf:()=>colorTrio('white','black','flesh'),
       numerology,num123:()=>numGroup([1,2,3],'purple','siembra'),num456:()=>numGroup([4,5,6],'amber','estabilización'),num78910:()=>numGroup([7,8,9,10],'teal','maduración'),
       pairs,body,psicomagia};
@@ -347,6 +641,13 @@
     return fn ? fn() : '';
   }
 
+  function suitVisual(key) {
+    if (key === 'copas') return cup();
+    if (key === 'oros') return coin();
+    if (key === 'espadas') return sword();
+    if (key === 'bastos') return wand();
+    return '';
+  }
   const state = loadState();
   const root = document.getElementById('tapp');
 
@@ -357,23 +658,32 @@
     }
     return false;
   }
-
   function nextInModule(i) {
     if (i + 1 >= L.length) return -1;
     if (L[i + 1].m === L[i].m) return i + 1;
     return -1;
   }
 
+  function modeTabs() {
+    return `<div class="modetabs"><button class="modetab ${state.mode === 'lecciones' ? 'active' : ''}" onclick="window.__mode('lecciones')">Lecciones</button><button class="modetab ${state.mode === 'biblio' ? 'active' : ''}" onclick="window.__mode('biblio')">Biblioteca</button></div>`;
+  }
+
   function render() {
-    if (state.screen === 'home') renderHome();
-    else if (state.screen === 'lesson') renderLesson();
+    if (state.mode === 'biblio') {
+      if (state.libScreen === 'major') return renderMajorDetail();
+      if (state.libScreen === 'minor') return renderMinorDetail();
+      if (state.libScreen === 'suit') return renderSuitDetail();
+      return renderLibHome();
+    }
+    if (state.screen === 'lesson') renderLesson();
     else if (state.screen === 'complete') renderComplete();
+    else renderHome();
   }
 
   function renderHome() {
     const done = state.completed.size;
     const total = L.length;
-    let html = `<div class="screen"><div class="header"><div><p class="h-title">Aprende tarot</p><p class="h-sub">${done} de ${total} lecciones completadas</p></div><div class="h-stats"><div class="h-stat">XP <b>${state.xp}</b></div><button class="h-reset" onclick="window.__treset()" title="Reiniciar progreso" aria-label="Reiniciar">↺</button></div></div>`;
+    let html = `<div class="screen"><div class="header"><div><p class="h-title">Aprende tarot</p><p class="h-sub">${done} de ${total} lecciones completadas</p></div><div class="h-stats"><div class="h-stat">XP <b>${state.xp}</b></div><button class="h-btn" onclick="window.__treset()" title="Reiniciar progreso" aria-label="Reiniciar">↺</button></div></div>` + modeTabs();
     MODULES.forEach(mod => {
       html += `<div class="modgroup"><div class="modhead"><p class="modtitle">${mod.t}</p><p class="modsub">${mod.s}</p></div><div class="lessons">`;
       L.forEach((l, i) => {
@@ -407,15 +717,99 @@
   function renderComplete() {
     const lesson = L[state.li];
     const nextIdx = nextInModule(state.li);
-    const action = nextIdx >= 0
-      ? `onclick="window.__tstart(${nextIdx})">Siguiente lección`
-      : `onclick="window.__thome()">Volver al inicio`;
+    const action = nextIdx >= 0 ? `onclick="window.__tstart(${nextIdx})">Siguiente lección` : `onclick="window.__thome()">Volver al inicio`;
     const extraMsg = nextIdx < 0 ? '<p class="comp-body" style="margin-top: -8px;">Módulo terminado. Elegí el siguiente desde el inicio.</p>' : '';
     root.innerHTML = `<div class="screen comp"><svg class="comp-icon" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28" cy="28" r="26" fill="#EEEDFE" stroke="#7F77DD" stroke-width="1.2"/><path d="M17 28 L25 36 L39 22" stroke="#534AB7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><p class="comp-title">¡Lección completada!</p><p class="comp-body">${lesson.t}</p><div class="xpchip">+${state.lxp} XP</div>${extraMsg}<div class="navwrap"><button class="btn" ${action}</button></div></div>`;
   }
 
-  window.__tstart = function(i) { state.li = i; state.si = 0; state.lxp = 0; state.screen = 'lesson'; render(); };
+  function renderLibHome() {
+    const q = (state.libSearch || '').trim().toLowerCase();
+    const matchMajor = q ? LIB_MAJORS.filter(m => m.name.toLowerCase().includes(q) || m.num.toLowerCase() === q || (m.tags||[]).some(t => t.toLowerCase().includes(q))) : LIB_MAJORS;
+    const matchSuit = q ? LIB_SUITS.filter(s => s.name.toLowerCase().includes(q) || s.fn.toLowerCase().includes(q) || s.element.toLowerCase().includes(q)) : LIB_SUITS;
+    const matchMinor = q ? LIB_MINORS.filter(c => c.name.toLowerCase().includes(q) || c.suitName.toLowerCase().includes(q) || (c.tags||[]).some(t => t.toLowerCase().includes(q))) : null;
+
+    let html = `<div class="screen"><div class="header"><div><p class="h-title">Biblioteca</p><p class="h-sub">Significado de las cartas</p></div></div>${modeTabs()}<div class="search-wrap"><input type="text" class="search-in" id="search-in" placeholder="Buscar por nombre, número o tema…" value="${(state.libSearch || '').replace(/"/g,'&quot;')}" oninput="window.__libsearch(this.value)" /></div>`;
+
+    if (matchMajor.length) {
+      html += `<div class="lib-section"><p class="lib-head">ARCANOS MAYORES</p><div class="card-grid">`;
+      matchMajor.forEach(m => {
+        const origIdx = LIB_MAJORS.indexOf(m);
+        html += `<button class="card-tile" onclick="window.__libmajor(${origIdx})" aria-label="${m.name}">${card(m.num, m.name, m.accent, m.ill)}<span class="card-label">${m.name}</span></button>`;
+      });
+      html += `</div></div>`;
+    }
+
+    if (matchSuit.length) {
+      html += `<div class="lib-section"><p class="lib-head">LOS CUATRO PALOS</p><div class="suit-grid">`;
+      matchSuit.forEach(s => {
+        const origIdx = LIB_SUITS.indexOf(s);
+        const smallSvg = suitVisual(s.key).replace(/width="110"/, 'width="36"').replace(/height="140"/, 'height="44"');
+        html += `<button class="suit-tile" onclick="window.__libsuit(${origIdx})"><div class="suit-tile-ico">${smallSvg}</div><div class="suit-tile-info"><p class="suit-tile-name">${s.name}</p><p class="suit-tile-sub">${s.element} · ${s.fn}</p></div></button>`;
+      });
+      html += `</div></div>`;
+    }
+
+    // Minors: if searching, show matches; otherwise show them grouped by suit
+    if (q) {
+      if (matchMinor && matchMinor.length) {
+        html += `<div class="lib-section"><p class="lib-head">ARCANOS MENORES</p><div class="card-grid">`;
+        matchMinor.forEach(c => {
+          const origIdx = LIB_MINORS.indexOf(c);
+          html += `<button class="card-tile" onclick="window.__libminor(${origIdx})" aria-label="${c.name}">${minorCardSvg(c)}<span class="card-label">${c.name}</span></button>`;
+        });
+        html += `</div></div>`;
+      }
+    } else {
+      html += `<div class="lib-section"><p class="lib-head">ARCANOS MENORES</p>`;
+      LIB_SUITS.forEach(suit => {
+        html += `<p class="lib-subhead">${suit.name}</p><div class="card-grid">`;
+        LIB_MINORS.forEach((c, idx) => {
+          if (c.suit !== suit.key) return;
+          html += `<button class="card-tile" onclick="window.__libminor(${idx})" aria-label="${c.name}">${minorCardSvg(c)}<span class="card-label">${c.rank}</span></button>`;
+        });
+        html += `</div>`;
+      });
+      html += `</div>`;
+    }
+
+    if (q && !matchMajor.length && !matchSuit.length && (!matchMinor || !matchMinor.length)) {
+      html += `<p style="text-align:center;color:var(--color-text-tertiary);padding:2rem 1rem;font-size:14px;">No encontré nada con "${q}". Probá otro término.</p>`;
+    }
+
+    html += `</div>`;
+    root.innerHTML = html;
+    const inEl = document.getElementById('search-in');
+    if (inEl && q) { inEl.focus(); inEl.setSelectionRange(q.length, q.length); }
+  }
+
+  function renderMajorDetail() {
+    const m = LIB_MAJORS[state.libCard];
+    if (!m) { state.libScreen = 'home'; render(); return; }
+    root.innerHTML = `<div class="screen"><div class="pbar-wrap"><button class="pback" onclick="window.__libback()" aria-label="Volver">←</button><p style="margin: 0; font-size: 14px; color: var(--color-text-secondary); flex: 1;">Arcano Mayor</p></div><div class="detail-hero">${card(m.num, m.name, m.accent, m.ill)}</div><h2 class="detail-title">${m.name}</h2><p class="detail-sub">Arcano ${m.num}</p><div class="tag-row">${(m.tags||[]).map(t => `<span class="tag">${t}</span>`).join('')}</div><div class="detail-section"><p class="detail-label">Esencia</p><p class="detail-text">${m.essence}</p></div><div class="detail-section"><p class="detail-label">Mirada junguiana</p><p class="detail-text">${m.jung}</p></div><div class="detail-section"><p class="detail-label">Mirada jodorowskiana</p><p class="detail-text">${m.jodo}</p></div><div class="detail-section"><p class="detail-label">Invertida</p><p class="detail-text"><em>${m.reversed}</em></p></div></div>`;
+  }
+
+  function renderMinorDetail() {
+    const c = LIB_MINORS[state.libCard];
+    if (!c) { state.libScreen = 'home'; render(); return; }
+    root.innerHTML = `<div class="screen"><div class="pbar-wrap"><button class="pback" onclick="window.__libback()" aria-label="Volver">←</button><p style="margin: 0; font-size: 14px; color: var(--color-text-secondary); flex: 1;">Arcano Menor</p></div><div class="detail-hero">${minorCardSvg(c)}</div><h2 class="detail-title">${c.name}</h2><p class="detail-sub">${c.suitName}</p><div class="tag-row">${(c.tags||[]).map(t => `<span class="tag">${t}</span>`).join('')}</div><div class="detail-section"><p class="detail-label">Esencia</p><p class="detail-text">${c.essence}</p></div><div class="detail-section"><p class="detail-label">Mirada junguiana</p><p class="detail-text">${c.jung}</p></div><div class="detail-section"><p class="detail-label">Mirada jodorowskiana</p><p class="detail-text">${c.jodo}</p></div><div class="detail-section"><p class="detail-label">Invertida</p><p class="detail-text"><em>${c.reversed}</em></p></div></div>`;
+  }
+
+  function renderSuitDetail() {
+    const s = LIB_SUITS[state.libCard];
+    if (!s) { state.libScreen = 'home'; render(); return; }
+    root.innerHTML = `<div class="screen"><div class="pbar-wrap"><button class="pback" onclick="window.__libback()" aria-label="Volver">←</button><p style="margin: 0; font-size: 14px; color: var(--color-text-secondary); flex: 1;">Palo de los Menores</p></div><div class="detail-hero">${suitVisual(s.key)}</div><h2 class="detail-title">${s.name}</h2><p class="detail-sub">${s.element} · ${s.fn}</p><div class="detail-section"><p class="detail-label">Esencia</p><p class="detail-text">${s.essence}</p></div><div class="detail-section"><p class="detail-label">Mirada junguiana</p><p class="detail-text">${s.jung}</p></div><div class="detail-section"><p class="detail-label">Mirada jodorowskiana</p><p class="detail-text">${s.jodo}</p></div><div class="detail-section"><p class="detail-label">En una tirada</p><p class="detail-text">${s.dominance}</p></div></div>`;
+  }
+
+  // ─── Handlers ───
+  window.__mode = function(m) { state.mode = m; state.libScreen = 'home'; saveState(); render(); };
+  window.__libmajor = function(i) { state.libCard = i; state.libScreen = 'major'; render(); };
+  window.__libminor = function(i) { state.libCard = i; state.libScreen = 'minor'; render(); };
+  window.__libsuit = function(i) { state.libCard = i; state.libScreen = 'suit'; render(); };
+  window.__libback = function() { state.libScreen = 'home'; render(); };
+  window.__libsearch = function(v) { state.libSearch = v; render(); };
+
   window.__thome = function() { state.screen = 'home'; render(); };
+  window.__tstart = function(i) { state.li = i; state.si = 0; state.lxp = 0; state.screen = 'lesson'; render(); };
   window.__tnext = function() {
     const lesson = L[state.li];
     state.si++;
