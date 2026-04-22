@@ -1,7 +1,7 @@
 {
   "name": "Aprende Tarot",
   "short_name": "Tarot",
-  "description": "Aprendé tarot con lecciones interactivas: fundamentos, mirada junguiana y escuela Jodorowsky.",
+  "description": "Aprendé tarot con enfoque junguiano y jodorowskiano — lecciones, biblioteca de 78 cartas y fuentes teóricas.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

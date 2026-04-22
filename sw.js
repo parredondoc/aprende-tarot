@@ -1,10 +1,32 @@
-const CACHE = 'aprende-tarot-v1';
+const CACHE = 'aprende-tarot-v3';
 const FILES = [
   './',
   './index.html',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './cards/loco.jpg',
+  './cards/mago.jpg',
+  './cards/sacerdotisa.jpg',
+  './cards/emperatriz.jpg',
+  './cards/emperador.jpg',
+  './cards/hierofante.jpg',
+  './cards/amantes.jpg',
+  './cards/carro.jpg',
+  './cards/fuerza.jpg',
+  './cards/ermitano.jpg',
+  './cards/rueda.jpg',
+  './cards/justicia.jpg',
+  './cards/colgado.jpg',
+  './cards/muerte.jpg',
+  './cards/templanza.jpg',
+  './cards/diablo.jpg',
+  './cards/torre.jpg',
+  './cards/estrella.jpg',
+  './cards/luna.jpg',
+  './cards/sol.jpg',
+  './cards/juicio.jpg',
+  './cards/mundo.jpg'
 ];
 
 self.addEventListener('install', e => {
